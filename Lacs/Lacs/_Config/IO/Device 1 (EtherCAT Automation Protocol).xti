@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.32" ClassName="CDevEthernetProtocolNvDef" SubType="112" TcProjectVariant="Pyrometer_Motor">
+	<Device Id="1" DevType="112" AmsPort="28673" AmsNetId="129.169.49.186.2.1" RemoteName="Device 1 (EtherCAT Automation Protocol)">
+		<Name>__FILENAME__</Name>
+		<AddressInfo>
+			<Pnp>
+				<DeviceDesc>Ethernet 2 (TwinCAT-Intel PCI Ethernet Adapter (Gig</DeviceDesc>
+				<DeviceName>\DEVICE\{B1D64CFC-2B2B-426C-A2BF-DE19BEFA308F}</DeviceName>
+				<DeviceData>001b21387647</DeviceData>
+			</Pnp>
+		</AddressInfo>
+		<Image Id="1" AddrType="1" ImageType="3">
+			<Name>Image</Name>
+		</Image>
+		<Ethernet DeviceDesc="Ethernet 2 (TwinCAT-Intel PCI Ethernet Adapter (Gig"/>
+		<Eap EapDeviceGuid="{EB088BC6-68A5-4918-8C33-D2E6296869A5}"/>
+	</Device>
+</TcSmItem>

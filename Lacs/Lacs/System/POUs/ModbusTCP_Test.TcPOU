@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="ModbusTCP_Test" Id="{a9fead54-f083-4c7c-b371-cf6787673f3a}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM ModbusTCP_Test
+VAR
+		ModBusTest : BOOL	:= 	TRUE;	//Tag_ModbusTCP<00001,OP>
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
