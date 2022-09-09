@@ -1,13 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1">
-  <POU Name="MAIN" Id="{1c4fe094-ad65-4615-9ae0-9ca5c10a1bc8}">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="MAIN" Id="{1c4fe094-ad65-4615-9ae0-9ca5c10a1bc8}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
+	Dummy : BOOL := FALSE;
+	bTest: BOOL := FALSE;
 END_VAR
-]]>
-    </Declaration>
+]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[{IF defined (Pyrometer_Motor)}
+	bTest := TRUE;
+{END_IF}]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

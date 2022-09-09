@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.32" ClassName="CNestedPlcProjDef" TcProjectVariant="Pyrometer_Motor">
+	<Project GUID="{48C86FDB-5FC4-49BC-979B-04AF4D3CBD6E}" Name="System" PrjFilePath="..\..\System\System.plcproj" TmcFilePath="..\..\System\System.tmc" EnableImplicitDefines="true" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
+		<ProjectVariant PvUseDefine="true">
+			<Variant>
+				<Name>Pyrometer_Motor</Name>
+				<Defines></Defines>
+			</Variant>
+		</ProjectVariant>
+		<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{C6040699-3DF1-2237-1CC7-FA57114C35DD}">
+			<Name>System Instance</Name>
+			<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
+			<Contexts>
+				<Context>
+					<Id NeedCalleeCall="true">0</Id>
+					<Name>PlcTask</Name>
+					<ManualConfig>
+						<OTCID>#x02010030</OTCID>
+					</ManualConfig>
+					<Priority>20</Priority>
+					<CycleTime>10000000</CycleTime>
+				</Context>
+			</Contexts>
+			<TaskPouOids>
+				<TaskPouOid Prio="20" OTCID="#x08502001"/>
+			</TaskPouOids>
+		</Instance>
+	</Project>
+</TcSmItem>

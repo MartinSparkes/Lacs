@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.32">
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.32" TcProjectVariant="Pyrometer_Motor">
 	<Project ProjectGUID="{CC25E253-94DE-4D61-8C3A-B3B18288C2C3}" Target64Bit="true" ShowHideConfigurations="#x106">
 		<System>
 			<Tasks>
@@ -11,5 +11,11 @@
 		<Plc>
 			<Project File="System.xti"/>
 		</Plc>
+		<Variants SpecificLocalBootFolder="true">
+			<Variant Save="true">
+				<Name>Pyrometer_Motor</Name>
+				<Desc><![CDATA[Motorised pyrometer]]></Desc>
+			</Variant>
+		</Variants>
 	</Project>
 </TcSmProject>
