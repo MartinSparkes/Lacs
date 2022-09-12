@@ -3,6 +3,10 @@
   <GVL Name="GVL_SA" Id="{602e9937-722f-4362-8e42-e6d4fb7e5893}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
+	myMotor : FB_MotorControl;	
+
+
+
 	//Single Axis 'SA'
 	SingleAxis 	:	AXIS_REF;
 	
