@@ -5,8 +5,7 @@
 VAR_GLOBAL
 	myMotor : FB_MotorControl;	
 
-
-
+(*
 	//Single Axis 'SA'
 	SingleAxis 	:	AXIS_REF;
 	
@@ -66,7 +65,7 @@ VAR_GLOBAL
 	
 	stSA_Halt			: ST_MC_Status;
 	stSA_Stop			: ST_MC_Status;
-	
+*)	
 	
 	
 END_VAR]]></Declaration>

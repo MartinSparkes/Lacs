@@ -9,7 +9,7 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[MotionControl();	
+      <ST><![CDATA[GVL_SA.myMotor.ExecuteCommands_LD();
 
 {IF defined (Pyrometer_Motor)}
 	bTest := TRUE;

@@ -116,7 +116,7 @@ END_VAR
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
                             <o>
-                              <v n="Operand">"GVL_SA.stSA_Reset.Done"</v>
+                              <v n="Operand">"stSA_Reset.Done"</v>
                               <v n="Type">"BOOL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -141,7 +141,7 @@ END_VAR
                         <o n="RValue" t="BoxTreeBox">
                           <v n="BoxType">"MC_Reset"</v>
                           <o n="Instance" t="Operand">
-                            <v n="Operand">"GVL_SA.fbSA_Reset"</v>
+                            <v n="Operand">"fbSA_Reset"</v>
                             <v n="Type">"MC_RESET"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -160,7 +160,7 @@ END_VAR
                             <l2 n="OutputItems" cet="Operand">
                               <n />
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_Reset.Busy"</v>
+                                <v n="Operand">"stSA_Reset.Busy"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -176,7 +176,7 @@ END_VAR
                                 <v n="Id">13L</v>
                               </o>
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_Reset.Error"</v>
+                                <v n="Operand">"stSA_Reset.Error"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -192,7 +192,7 @@ END_VAR
                                 <v n="Id">14L</v>
                               </o>
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_Reset.ErrrorID"</v>
+                                <v n="Operand">"stSA_Reset.ErrrorID"</v>
                                 <v n="Type">"UDINT"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -218,7 +218,7 @@ END_VAR
                           <l2 n="InputItems" cet="BoxTreeOperand">
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.SingleAxis"</v>
+                                <v n="Operand">"SingleAxis"</v>
                                 <v n="Type">"AXIS_REF"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -237,7 +237,7 @@ END_VAR
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.bSA_ResetExe"</v>
+                                <v n="Operand">"bSA_ResetExe"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -307,7 +307,7 @@ END_VAR
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
                             <o>
-                              <v n="Operand">"GVL_SA.stSA_Power.Done"</v>
+                              <v n="Operand">"stSA_Power.Done"</v>
                               <v n="Type">"BOOL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -332,7 +332,7 @@ END_VAR
                         <o n="RValue" t="BoxTreeBox">
                           <v n="BoxType">"MC_Power"</v>
                           <o n="Instance" t="Operand">
-                            <v n="Operand">"GVL_SA.fbSA_Power"</v>
+                            <v n="Operand">"fbSA_Power"</v>
                             <v n="Type">"MC_POWER"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -351,7 +351,7 @@ END_VAR
                             <l2 n="OutputItems" cet="Operand">
                               <n />
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_Power.Busy"</v>
+                                <v n="Operand">"stSA_Power.Busy"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -367,7 +367,7 @@ END_VAR
                                 <v n="Id">22L</v>
                               </o>
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_Power.Active"</v>
+                                <v n="Operand">"stSA_Power.Active"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -383,7 +383,7 @@ END_VAR
                                 <v n="Id">23L</v>
                               </o>
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_Power.Error"</v>
+                                <v n="Operand">"stSA_Power.Error"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -399,7 +399,7 @@ END_VAR
                                 <v n="Id">24L</v>
                               </o>
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_Power.ErrrorID"</v>
+                                <v n="Operand">"stSA_Power.ErrrorID"</v>
                                 <v n="Type">"UDINT"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -425,7 +425,7 @@ END_VAR
                           <l2 n="InputItems" cet="BoxTreeOperand">
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.SingleAxis"</v>
+                                <v n="Operand">"SingleAxis"</v>
                                 <v n="Type">"AXIS_REF"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -444,7 +444,7 @@ END_VAR
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.bSA_PowerEnCmd"</v>
+                                <v n="Operand">"bSA_PowerEnCmd"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -463,7 +463,7 @@ END_VAR
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.bSA_PowerEnPositive"</v>
+                                <v n="Operand">"bSA_PowerEnPositive"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -482,7 +482,7 @@ END_VAR
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.bSA_PowerEnNegative"</v>
+                                <v n="Operand">"bSA_PowerEnNegative"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -501,7 +501,7 @@ END_VAR
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.lrSA_PowerOverride"</v>
+                                <v n="Operand">"lrSA_PowerOverride"</v>
                                 <v n="Type">"LREAL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -621,7 +621,7 @@ END_VAR
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
                             <o>
-                              <v n="Operand">"GVL_SA.stSA_Home.Done"</v>
+                              <v n="Operand">"stSA_Home.Done"</v>
                               <v n="Type">"BOOL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -646,7 +646,7 @@ END_VAR
                         <o n="RValue" t="BoxTreeBox">
                           <v n="BoxType">"MC_Home"</v>
                           <o n="Instance" t="Operand">
-                            <v n="Operand">"GVL_SA.fbSA_Home"</v>
+                            <v n="Operand">"fbSA_Home"</v>
                             <v n="Type">"MC_HOME"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -665,7 +665,7 @@ END_VAR
                             <l2 n="OutputItems" cet="Operand">
                               <n />
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_Home.Busy"</v>
+                                <v n="Operand">"stSA_Home.Busy"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -681,7 +681,7 @@ END_VAR
                                 <v n="Id">42L</v>
                               </o>
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_Home.Active"</v>
+                                <v n="Operand">"stSA_Home.Active"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -697,7 +697,7 @@ END_VAR
                                 <v n="Id">43L</v>
                               </o>
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_Home.CmdAborted"</v>
+                                <v n="Operand">"stSA_Home.CmdAborted"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -713,7 +713,7 @@ END_VAR
                                 <v n="Id">44L</v>
                               </o>
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_Home.Error"</v>
+                                <v n="Operand">"stSA_Home.Error"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -729,7 +729,7 @@ END_VAR
                                 <v n="Id">45L</v>
                               </o>
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_Home.ErrrorID"</v>
+                                <v n="Operand">"stSA_Home.ErrrorID"</v>
                                 <v n="Type">"UDINT"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -755,7 +755,7 @@ END_VAR
                           <l2 n="InputItems" cet="BoxTreeOperand">
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.SingleAxis"</v>
+                                <v n="Operand">"SingleAxis"</v>
                                 <v n="Type">"AXIS_REF"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -774,7 +774,7 @@ END_VAR
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.bSA_HomeExe"</v>
+                                <v n="Operand">"bSA_HomeExe"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -793,7 +793,7 @@ END_VAR
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.lrSA_HomePosition"</v>
+                                <v n="Operand">"lrSA_HomePosition"</v>
                                 <v n="Type">"LREAL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -869,7 +869,7 @@ END_VAR
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.bSA_HomeCamInput"</v>
+                                <v n="Operand">"bSA_HomeCamInput"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -953,7 +953,7 @@ END_VAR
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
                             <o>
-                              <v n="Operand">"GVL_SA.stSA_Jog.Done"</v>
+                              <v n="Operand">"stSA_Jog.Done"</v>
                               <v n="Type">"BOOL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -978,7 +978,7 @@ END_VAR
                         <o n="RValue" t="BoxTreeBox">
                           <v n="BoxType">"MC_Jog"</v>
                           <o n="Instance" t="Operand">
-                            <v n="Operand">"GVL_SA.fbSA_Jog"</v>
+                            <v n="Operand">"fbSA_Jog"</v>
                             <v n="Type">"MC_JOG"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -997,7 +997,7 @@ END_VAR
                             <l2 n="OutputItems" cet="Operand">
                               <n />
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_Jog.Busy"</v>
+                                <v n="Operand">"stSA_Jog.Busy"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1013,7 +1013,7 @@ END_VAR
                                 <v n="Id">63L</v>
                               </o>
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_Jog.Active"</v>
+                                <v n="Operand">"stSA_Jog.Active"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1029,7 +1029,7 @@ END_VAR
                                 <v n="Id">64L</v>
                               </o>
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_Jog.CmdAborted"</v>
+                                <v n="Operand">"stSA_Jog.CmdAborted"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1045,7 +1045,7 @@ END_VAR
                                 <v n="Id">65L</v>
                               </o>
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_Jog.Error"</v>
+                                <v n="Operand">"stSA_Jog.Error"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1061,7 +1061,7 @@ END_VAR
                                 <v n="Id">66L</v>
                               </o>
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_Jog.ErrrorID"</v>
+                                <v n="Operand">"stSA_Jog.ErrrorID"</v>
                                 <v n="Type">"UDINT"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1087,7 +1087,7 @@ END_VAR
                           <l2 n="InputItems" cet="BoxTreeOperand">
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.SingleAxis"</v>
+                                <v n="Operand">"SingleAxis"</v>
                                 <v n="Type">"AXIS_REF"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1106,7 +1106,7 @@ END_VAR
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.bSA_JogFwd"</v>
+                                <v n="Operand">"bSA_JogFwd"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1125,7 +1125,7 @@ END_VAR
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.bSA_JogRev"</v>
+                                <v n="Operand">"bSA_JogRev"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1182,7 +1182,7 @@ END_VAR
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.lrSA_JogVelocity"</v>
+                                <v n="Operand">"lrSA_JogVelocity"</v>
                                 <v n="Type">"LREAL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1327,7 +1327,7 @@ END_VAR
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
                             <o>
-                              <v n="Operand">"GVL_SA.stSA_VelSts1.InVelocity"</v>
+                              <v n="Operand">"stSA_VelSts1.InVelocity"</v>
                               <v n="Type">"BOOL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -1352,7 +1352,7 @@ END_VAR
                         <o n="RValue" t="BoxTreeBox">
                           <v n="BoxType">"MC_MoveVelocity"</v>
                           <o n="Instance" t="Operand">
-                            <v n="Operand">"GVL_SA.fbSA_Vel1"</v>
+                            <v n="Operand">"fbSA_Vel1"</v>
                             <v n="Type">"MC_MoveVelocity"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -1371,7 +1371,7 @@ END_VAR
                             <l2 n="OutputItems" cet="Operand">
                               <n />
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_VelSts1.Busy"</v>
+                                <v n="Operand">"stSA_VelSts1.Busy"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1387,7 +1387,7 @@ END_VAR
                                 <v n="Id">108L</v>
                               </o>
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_VelSts1.Active"</v>
+                                <v n="Operand">"stSA_VelSts1.Active"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1403,7 +1403,7 @@ END_VAR
                                 <v n="Id">109L</v>
                               </o>
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_VelSts1.CmdAborted"</v>
+                                <v n="Operand">"stSA_VelSts1.CmdAborted"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1419,7 +1419,7 @@ END_VAR
                                 <v n="Id">110L</v>
                               </o>
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_VelSts1.Error"</v>
+                                <v n="Operand">"stSA_VelSts1.Error"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1435,7 +1435,7 @@ END_VAR
                                 <v n="Id">111L</v>
                               </o>
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_VelSts1.ErrrorID"</v>
+                                <v n="Operand">"stSA_VelSts1.ErrrorID"</v>
                                 <v n="Type">"UDINT"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1461,7 +1461,7 @@ END_VAR
                           <l2 n="InputItems" cet="BoxTreeOperand">
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.SingleAxis"</v>
+                                <v n="Operand">"SingleAxis"</v>
                                 <v n="Type">"AXIS_REF"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1480,7 +1480,7 @@ END_VAR
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.stSA_VelCmd1.bExe"</v>
+                                <v n="Operand">"stSA_VelCmd1.bExe"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1499,7 +1499,7 @@ END_VAR
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.stSA_VelCmd1.lrVelocity"</v>
+                                <v n="Operand">"stSA_VelCmd1.lrVelocity"</v>
                                 <v n="Type">"LREAL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1518,7 +1518,7 @@ END_VAR
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.stSA_VelCmd1.lrAcceleration"</v>
+                                <v n="Operand">"stSA_VelCmd1.lrAcceleration"</v>
                                 <v n="Type">"LREAL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1537,7 +1537,7 @@ END_VAR
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.stSA_VelCmd1.lrDeceleration"</v>
+                                <v n="Operand">"stSA_VelCmd1.lrDeceleration"</v>
                                 <v n="Type">"LREAL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1575,7 +1575,7 @@ END_VAR
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.stSA_VelCmd1.EnuDirection"</v>
+                                <v n="Operand">"stSA_VelCmd1.EnuDirection"</v>
                                 <v n="Type">"MC_Direction"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1594,7 +1594,7 @@ END_VAR
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.stSA_VelCmd1.EnuBufferMode"</v>
+                                <v n="Operand">"stSA_VelCmd1.EnuBufferMode"</v>
                                 <v n="Type">"MC_BufferMode"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1701,7 +1701,7 @@ END_VAR
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
                             <o>
-                              <v n="Operand">"GVL_SA.stSA_RelSts1.Done"</v>
+                              <v n="Operand">"stSA_RelSts1.Done"</v>
                               <v n="Type">"BOOL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -1726,7 +1726,7 @@ END_VAR
                         <o n="RValue" t="BoxTreeBox">
                           <v n="BoxType">"MC_MoveRelative"</v>
                           <o n="Instance" t="Operand">
-                            <v n="Operand">"GVL_SA.fbSA_Rel1"</v>
+                            <v n="Operand">"fbSA_Rel1"</v>
                             <v n="Type">"MC_MoveRelative"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -1745,7 +1745,7 @@ END_VAR
                             <l2 n="OutputItems" cet="Operand">
                               <n />
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_RelSts1.Busy"</v>
+                                <v n="Operand">"stSA_RelSts1.Busy"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1761,7 +1761,7 @@ END_VAR
                                 <v n="Id">129L</v>
                               </o>
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_RelSts1.Active"</v>
+                                <v n="Operand">"stSA_RelSts1.Active"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1777,7 +1777,7 @@ END_VAR
                                 <v n="Id">130L</v>
                               </o>
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_RelSts1.CmdAborted"</v>
+                                <v n="Operand">"stSA_RelSts1.CmdAborted"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1793,7 +1793,7 @@ END_VAR
                                 <v n="Id">131L</v>
                               </o>
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_RelSts1.Error"</v>
+                                <v n="Operand">"stSA_RelSts1.Error"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1809,7 +1809,7 @@ END_VAR
                                 <v n="Id">132L</v>
                               </o>
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_RelSts1.ErrrorID"</v>
+                                <v n="Operand">"stSA_RelSts1.ErrrorID"</v>
                                 <v n="Type">"UDINT"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1835,7 +1835,7 @@ END_VAR
                           <l2 n="InputItems" cet="BoxTreeOperand">
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.SingleAxis"</v>
+                                <v n="Operand">"SingleAxis"</v>
                                 <v n="Type">"AXIS_REF"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1854,7 +1854,7 @@ END_VAR
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.stSA_RelCmd1.bExe"</v>
+                                <v n="Operand">"stSA_RelCmd1.bExe"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1873,7 +1873,7 @@ END_VAR
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.stSA_RelCmd1.lrDistance"</v>
+                                <v n="Operand">"stSA_RelCmd1.lrDistance"</v>
                                 <v n="Type">"LREAL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1892,7 +1892,7 @@ END_VAR
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.stSA_RelCmd1.lrVelocity"</v>
+                                <v n="Operand">"stSA_RelCmd1.lrVelocity"</v>
                                 <v n="Type">"LREAL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1911,7 +1911,7 @@ END_VAR
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.stSA_RelCmd1.lrAcceleration"</v>
+                                <v n="Operand">"stSA_RelCmd1.lrAcceleration"</v>
                                 <v n="Type">"LREAL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1930,7 +1930,7 @@ END_VAR
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.stSA_RelCmd1.lrDeceleration"</v>
+                                <v n="Operand">"stSA_RelCmd1.lrDeceleration"</v>
                                 <v n="Type">"LREAL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1968,7 +1968,7 @@ END_VAR
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.stSA_RelCmd1.EnuBufferMode"</v>
+                                <v n="Operand">"stSA_RelCmd1.EnuBufferMode"</v>
                                 <v n="Type">"MC_BufferMode"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -2075,7 +2075,7 @@ END_VAR
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
                             <o>
-                              <v n="Operand">"GVL_SA.stSA_AbsSts1.Done"</v>
+                              <v n="Operand">"stSA_AbsSts1.Done"</v>
                               <v n="Type">"BOOL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -2100,7 +2100,7 @@ END_VAR
                         <o n="RValue" t="BoxTreeBox">
                           <v n="BoxType">"MC_MoveAbsolute"</v>
                           <o n="Instance" t="Operand">
-                            <v n="Operand">"GVL_SA.fbSA_Abs1"</v>
+                            <v n="Operand">"fbSA_Abs1"</v>
                             <v n="Type">"MC_MoveAbsolute"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -2119,7 +2119,7 @@ END_VAR
                             <l2 n="OutputItems" cet="Operand">
                               <n />
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_AbsSts1.Busy"</v>
+                                <v n="Operand">"stSA_AbsSts1.Busy"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -2135,7 +2135,7 @@ END_VAR
                                 <v n="Id">154L</v>
                               </o>
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_AbsSts1.Active"</v>
+                                <v n="Operand">"stSA_AbsSts1.Active"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -2151,7 +2151,7 @@ END_VAR
                                 <v n="Id">155L</v>
                               </o>
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_AbsSts1.CmdAborted"</v>
+                                <v n="Operand">"stSA_AbsSts1.CmdAborted"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -2167,7 +2167,7 @@ END_VAR
                                 <v n="Id">156L</v>
                               </o>
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_AbsSts1.Error"</v>
+                                <v n="Operand">"stSA_AbsSts1.Error"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -2183,7 +2183,7 @@ END_VAR
                                 <v n="Id">157L</v>
                               </o>
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_AbsSts1.ErrrorID"</v>
+                                <v n="Operand">"stSA_AbsSts1.ErrrorID"</v>
                                 <v n="Type">"UDINT"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -2209,8 +2209,8 @@ END_VAR
                           <l2 n="InputItems" cet="BoxTreeOperand">
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.SingleAxis"</v>
-                                <v n="Type">"AXIS_REF"</v>
+                                <v n="Operand">"SingleAxis"</v>
+                                <v n="Type">"AXIS_REF[REF]"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
                                 <v n="Address">""</v>
@@ -2228,7 +2228,7 @@ END_VAR
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.stSA_AbsCmd1.bExe"</v>
+                                <v n="Operand">"stSA_AbsCmd1.bExe"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -2247,7 +2247,7 @@ END_VAR
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.stSA_AbsCmd1.lrPosition"</v>
+                                <v n="Operand">"stSA_AbsCmd1.lrPosition"</v>
                                 <v n="Type">"LREAL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -2266,7 +2266,7 @@ END_VAR
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.stSA_AbsCmd1.lrVelocity"</v>
+                                <v n="Operand">"stSA_AbsCmd1.lrVelocity"</v>
                                 <v n="Type">"LREAL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -2285,7 +2285,7 @@ END_VAR
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.stSA_AbsCmd1.lrAcceleration"</v>
+                                <v n="Operand">"stSA_AbsCmd1.lrAcceleration"</v>
                                 <v n="Type">"LREAL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -2304,7 +2304,7 @@ END_VAR
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.stSA_AbsCmd1.lrDeceleration"</v>
+                                <v n="Operand">"stSA_AbsCmd1.lrDeceleration"</v>
                                 <v n="Type">"LREAL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -2342,7 +2342,7 @@ END_VAR
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.stSA_AbsCmd1.EnuBufferMode"</v>
+                                <v n="Operand">"stSA_AbsCmd1.EnuBufferMode"</v>
                                 <v n="Type">"MC_BufferMode"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -2449,7 +2449,7 @@ END_VAR
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
                             <o>
-                              <v n="Operand">"GVL_SA.stSA_Halt.Done"</v>
+                              <v n="Operand">"stSA_Halt.Done"</v>
                               <v n="Type">"BOOL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -2474,7 +2474,7 @@ END_VAR
                         <o n="RValue" t="BoxTreeBox">
                           <v n="BoxType">"MC_Halt"</v>
                           <o n="Instance" t="Operand">
-                            <v n="Operand">"GVL_SA.fbSA_Halt"</v>
+                            <v n="Operand">"fbSA_Halt"</v>
                             <v n="Type">"MC_Halt"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -2493,7 +2493,7 @@ END_VAR
                             <l2 n="OutputItems" cet="Operand">
                               <n />
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_Halt.Busy"</v>
+                                <v n="Operand">"stSA_Halt.Busy"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -2509,7 +2509,7 @@ END_VAR
                                 <v n="Id">196L</v>
                               </o>
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_Halt.Active"</v>
+                                <v n="Operand">"stSA_Halt.Active"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -2525,7 +2525,7 @@ END_VAR
                                 <v n="Id">197L</v>
                               </o>
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_Halt.CmdAborted"</v>
+                                <v n="Operand">"stSA_Halt.CmdAborted"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -2541,7 +2541,7 @@ END_VAR
                                 <v n="Id">198L</v>
                               </o>
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_Halt.Error"</v>
+                                <v n="Operand">"stSA_Halt.Error"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -2557,7 +2557,7 @@ END_VAR
                                 <v n="Id">199L</v>
                               </o>
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_Halt.ErrrorID"</v>
+                                <v n="Operand">"stSA_Halt.ErrrorID"</v>
                                 <v n="Type">"UDINT"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -2583,8 +2583,8 @@ END_VAR
                           <l2 n="InputItems" cet="BoxTreeOperand">
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.SingleAxis"</v>
-                                <v n="Type">"AXIS_REF"</v>
+                                <v n="Operand">"SingleAxis"</v>
+                                <v n="Type">"AXIS_REF[REF]"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
                                 <v n="Address">""</v>
@@ -2602,7 +2602,7 @@ END_VAR
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.bSA_HaltExe"</v>
+                                <v n="Operand">"bSA_HaltExe"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -2760,7 +2760,7 @@ END_VAR
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
                             <o>
-                              <v n="Operand">"GVL_SA.stSA_Stop.Done"</v>
+                              <v n="Operand">"stSA_Stop.Done"</v>
                               <v n="Type">"BOOL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -2785,7 +2785,7 @@ END_VAR
                         <o n="RValue" t="BoxTreeBox">
                           <v n="BoxType">"MC_Stop"</v>
                           <o n="Instance" t="Operand">
-                            <v n="Operand">"GVL_SA.fbSA_Stop"</v>
+                            <v n="Operand">"fbSA_Stop"</v>
                             <v n="Type">"MC_Stop"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -2804,7 +2804,7 @@ END_VAR
                             <l2 n="OutputItems" cet="Operand">
                               <n />
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_Stop.Busy"</v>
+                                <v n="Operand">"stSA_Stop.Busy"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -2820,7 +2820,7 @@ END_VAR
                                 <v n="Id">217L</v>
                               </o>
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_Stop.Active"</v>
+                                <v n="Operand">"stSA_Stop.Active"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -2836,7 +2836,7 @@ END_VAR
                                 <v n="Id">218L</v>
                               </o>
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_Stop.CmdAborted"</v>
+                                <v n="Operand">"stSA_Stop.CmdAborted"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -2852,7 +2852,7 @@ END_VAR
                                 <v n="Id">219L</v>
                               </o>
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_Stop.Error"</v>
+                                <v n="Operand">"stSA_Stop.Error"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -2868,7 +2868,7 @@ END_VAR
                                 <v n="Id">220L</v>
                               </o>
                               <o>
-                                <v n="Operand">"GVL_SA.stSA_Stop.ErrrorID"</v>
+                                <v n="Operand">"stSA_Stop.ErrrorID"</v>
                                 <v n="Type">"UDINT"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -2894,8 +2894,8 @@ END_VAR
                           <l2 n="InputItems" cet="BoxTreeOperand">
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.SingleAxis"</v>
-                                <v n="Type">"AXIS_REF"</v>
+                                <v n="Operand">"SingleAxis"</v>
+                                <v n="Type">"AXIS_REF[REF]"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
                                 <v n="Address">""</v>
@@ -2913,7 +2913,7 @@ END_VAR
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"GVL_SA.bSA_StopExe"</v>
+                                <v n="Operand">"bSA_StopExe"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -3087,7 +3087,7 @@ END_VAR
                       <o>
                         <v n="BoxType">"MC_ReadActualPosition"</v>
                         <o n="Instance" t="Operand">
-                          <v n="Operand">"GVL_SA.fbSA_GetPosition"</v>
+                          <v n="Operand">"fbSA_GetPosition"</v>
                           <v n="Type">"MC_ReadActualPosition"</v>
                           <v n="Comment">""</v>
                           <v n="SymbolComment">""</v>
@@ -3180,7 +3180,7 @@ END_VAR
                         <l2 n="InputItems" cet="BoxTreeOperand">
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"GVL_SA.SingleAxis"</v>
+                              <v n="Operand">"SingleAxis"</v>
                               <v n="Type">"AXIS_REF"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
