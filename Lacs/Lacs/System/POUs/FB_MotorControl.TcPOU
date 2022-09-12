@@ -12,30 +12,34 @@ END_VAR
 
 (*Internals*)
 VAR
+	eInitMotor : (START, IN_PROCESS, DONE, ERROR);	
+
+	stMC_Reset : ST_MC_Reset;
+	
 	
 	//Motion control function block instant variable 'fbSA_'
-	fbSA_Reset	:	MC_RESET;
-	fbSA_Power	:	MC_POWER;
-	fbSA_Home	: 	MC_HOME;
-	fbSA_Jog	:	MC_JOG;
+//	fbSA_Reset	:	MC_RESET;
+//	fbSA_Power	:	MC_POWER;
+//	fbSA_Home	: 	MC_HOME;
+//	fbSA_Jog	:	MC_JOG;
 	
-	fbSA_Vel1	: MC_MoveVelocity;
-	fbSA_Rel1	: MC_MoveRelative;
-	fbSA_Abs1	: MC_MoveAbsolute;
+	fbMoveVelocity	: MC_MoveVelocity;
+	fbMoveRelative	: MC_MoveRelative;
+	fbMoveAbsolute	: MC_MoveAbsolute;
 	
-	fbSA_Halt	: MC_Halt;
-	fbSA_Stop	: MC_Stop;
+	fbHalt	: MC_Halt;
+	fbStop	: MC_Stop;
 	
 	fbSA_GetPosition : MC_ReadActualPosition;
 	
 	//Input: Command
-	bSA_ResetExe		:	BOOL	;
+	bCmdResetExe		:	BOOL	;
 	
-	bSA_PowerEnCmd		:	BOOL	;
-	bSA_PowerEnPositive	:	BOOL	;
-	bSA_PowerEnNegative	:	BOOL	;
+	bCmdPowerEnable		:	BOOL	;
+	bCmdPowerEnablePositive	:	BOOL	;
+	bCmdPowerEnableNegative	:	BOOL	;
 	
-	bSA_HomeExe			:	BOOL	;
+	bCmdHomeExecute			:	BOOL	;
 	bSA_HomeCamInput	:	BOOL	;
 	
 	bSA_JogFwd			:	BOOL	;
@@ -44,9 +48,8 @@ VAR
 	bSA_HaltExe			: 	BOOL	;
 	bSA_StopExe			: 	BOOL	;
 	
-	
-	
-	stSA_VelCmd1			: ST_MC_CMD	;
+	//stStatusMoveVelocity	: ST_MC_CMD	;
+	stSA_VelCmd1	: ST_MC_CMD;
 	stSA_RelCmd1			: ST_MC_CMD	;
 	stSA_AbsCmd1			: ST_MC_CMD	;
 	
@@ -62,9 +65,11 @@ VAR
 	stSA_Home			: ST_MC_Status;
 	stSA_SetPosition	: ST_MC_Status;
 	stSA_Jog			: ST_MC_Status;
+	stSA_GetPosition	: ST_MC_Status;
+	
 	
 	stSA_VelSts1		: ST_MC_Status;
-	stSA_RelSts1		: ST_MC_Status;
+	stSA_MoveRelative		: ST_MC_Status;
 	stSA_AbsSts1		: ST_MC_Status;
 	
 	stSA_Halt			: ST_MC_Status;
@@ -73,14 +78,28 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[ExecuteCommands_LD();
-UpdateStatus_LD();]]></ST>
+      <ST><![CDATA[ExecuteCommands();
+GetStatus();]]></ST>
     </Implementation>
-    <Method Name="ExecuteCommands_LD" Id="{489d89ce-c8ae-4ad4-85e5-887c50bac62e}">
-      <Declaration><![CDATA[METHOD ExecuteCommands_LD : BOOL
+    <Method Name="ExecuteCommands" Id="{489d89ce-c8ae-4ad4-85e5-887c50bac62e}">
+      <Declaration><![CDATA[METHOD PRIVATE ExecuteCommands : BOOL
 VAR_INPUT
 END_VAR
-]]></Declaration>
+
+VAR
+	
+bResult : BOOL;
+
+	fbSA_Reset	:	MC_RESET;
+	
+	fbSA_Reset2	:	MC_RESET;
+	
+	fbSA_Power	:	MC_POWER;
+	fbSA_Home	: 	MC_HOME;
+	fbSA_Jog	:	MC_JOG;
+	
+	
+END_VAR]]></Declaration>
       <Implementation>
         <NWL>
           <XmlArchive>
@@ -101,6 +120,197 @@ END_VAR
                     <l2 n="NetworkItems" />
                     <l2 n="Connectors" />
                     <v n="Id">5L</v>
+                  </o>
+                  <o>
+                    <v n="ILActive">false</v>
+                    <v n="FBDValid">false</v>
+                    <v n="ILValid">false</v>
+                    <l2 n="ILLines" />
+                    <v n="Comment">""</v>
+                    <v n="Title">""</v>
+                    <v n="Label">""</v>
+                    <v n="OutCommented">false</v>
+                    <l2 n="NetworkItems" cet="BoxTreeAssign">
+                      <o>
+                        <o n="OutputItems" t="OutputItemList">
+                          <l2 n="OutputItems" cet="Operand">
+                            <o>
+                              <v n="Operand">"stMC_Reset.Done"</v>
+                              <v n="Type">"BOOL"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">true</v>
+                              <v n="Boolean">true</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">265L</v>
+                            </o>
+                          </l2>
+                        </o>
+                        <o n="Flags" t="Flags">
+                          <v n="Flags">0</v>
+                          <v n="Fixed">false</v>
+                          <v n="Extensible">false</v>
+                        </o>
+                        <o n="RValue" t="BoxTreeBox">
+                          <v n="BoxType">"MC_Reset"</v>
+                          <o n="Instance" t="Operand">
+                            <v n="Operand">"fbSA_Reset2"</v>
+                            <v n="Type">"MC_RESET"</v>
+                            <v n="Comment">""</v>
+                            <v n="SymbolComment">""</v>
+                            <v n="Address">""</v>
+                            <o n="Flags" t="Flags">
+                              <v n="Flags">0</v>
+                              <v n="Fixed">false</v>
+                              <v n="Extensible">false</v>
+                            </o>
+                            <v n="LValue">false</v>
+                            <v n="Boolean">false</v>
+                            <v n="IsInstance">true</v>
+                            <v n="Id">258L</v>
+                          </o>
+                          <o n="OutputItems" t="OutputItemList">
+                            <l2 n="OutputItems" cet="Operand">
+                              <n />
+                              <o>
+                                <v n="Operand">"stMC_Reset.Busy"</v>
+                                <v n="Type">"BOOL"</v>
+                                <v n="Comment">""</v>
+                                <v n="SymbolComment">""</v>
+                                <v n="Address">""</v>
+                                <o n="Flags" t="Flags">
+                                  <v n="Flags">0</v>
+                                  <v n="Fixed">false</v>
+                                  <v n="Extensible">false</v>
+                                </o>
+                                <v n="LValue">true</v>
+                                <v n="Boolean">false</v>
+                                <v n="IsInstance">false</v>
+                                <v n="Id">260L</v>
+                              </o>
+                              <o>
+                                <v n="Operand">"stMC_Reset.Error"</v>
+                                <v n="Type">"BOOL"</v>
+                                <v n="Comment">""</v>
+                                <v n="SymbolComment">""</v>
+                                <v n="Address">""</v>
+                                <o n="Flags" t="Flags">
+                                  <v n="Flags">0</v>
+                                  <v n="Fixed">false</v>
+                                  <v n="Extensible">false</v>
+                                </o>
+                                <v n="LValue">true</v>
+                                <v n="Boolean">false</v>
+                                <v n="IsInstance">false</v>
+                                <v n="Id">261L</v>
+                              </o>
+                              <o>
+                                <v n="Operand">"stMC_Reset.ErrrorID"</v>
+                                <v n="Type">"UDINT"</v>
+                                <v n="Comment">""</v>
+                                <v n="SymbolComment">""</v>
+                                <v n="Address">""</v>
+                                <o n="Flags" t="Flags">
+                                  <v n="Flags">0</v>
+                                  <v n="Fixed">false</v>
+                                  <v n="Extensible">false</v>
+                                </o>
+                                <v n="LValue">true</v>
+                                <v n="Boolean">false</v>
+                                <v n="IsInstance">false</v>
+                                <v n="Id">262L</v>
+                              </o>
+                            </l2>
+                          </o>
+                          <o n="Flags" t="Flags">
+                            <v n="Flags">0</v>
+                            <v n="Fixed">true</v>
+                            <v n="Extensible">false</v>
+                          </o>
+                          <n n="InputFlags" />
+                          <l2 n="InputItems" cet="BoxTreeOperand">
+                            <o>
+                              <o n="Operand" t="Operand">
+                                <v n="Operand">"SingleAxis"</v>
+                                <v n="Type">"AXIS_REF"</v>
+                                <v n="Comment">""</v>
+                                <v n="SymbolComment">""</v>
+                                <v n="Address">""</v>
+                                <o n="Flags" t="Flags">
+                                  <v n="Flags">0</v>
+                                  <v n="Fixed">false</v>
+                                  <v n="Extensible">false</v>
+                                </o>
+                                <v n="LValue">false</v>
+                                <v n="Boolean">false</v>
+                                <v n="IsInstance">false</v>
+                                <v n="Id">253L</v>
+                              </o>
+                              <v n="Id">252L</v>
+                            </o>
+                            <o>
+                              <o n="Operand" t="Operand">
+                                <v n="Operand">"stMC_Reset.CMD_Execute"</v>
+                                <v n="Type">"BOOL"</v>
+                                <v n="Comment">""</v>
+                                <v n="SymbolComment">""</v>
+                                <v n="Address">""</v>
+                                <o n="Flags" t="Flags">
+                                  <v n="Flags">0</v>
+                                  <v n="Fixed">false</v>
+                                  <v n="Extensible">false</v>
+                                </o>
+                                <v n="LValue">false</v>
+                                <v n="Boolean">false</v>
+                                <v n="IsInstance">false</v>
+                                <v n="Id">255L</v>
+                              </o>
+                              <v n="Id">254L</v>
+                            </o>
+                          </l2>
+                          <o n="InputParam" t="ParamList">
+                            <l2 n="Names" cet="String">
+                              <v>Axis</v>
+                              <v>Execute</v>
+                            </l2>
+                            <l2 n="Types" cet="String">
+                              <v>AXIS_REF[REF]</v>
+                              <v>BOOL</v>
+                            </l2>
+                          </o>
+                          <o n="OutputParam" t="ParamList">
+                            <l2 n="Names" cet="String">
+                              <v>Done</v>
+                              <v>Busy</v>
+                              <v>Error</v>
+                              <v>ErrorID</v>
+                            </l2>
+                            <l2 n="Types" cet="String">
+                              <v>BOOL</v>
+                              <v>BOOL</v>
+                              <v>BOOL</v>
+                              <v>UDINT</v>
+                            </l2>
+                          </o>
+                          <v n="CallType" t="Operator">FunctionBlock</v>
+                          <v n="EN">false</v>
+                          <v n="ENO">false</v>
+                          <n n="STSnippet" />
+                          <v n="ContainsExtensibleInputs">false</v>
+                          <v n="ProvidesSTSnippet">false</v>
+                          <v n="Id">259L</v>
+                        </o>
+                        <v n="Id">266L</v>
+                      </o>
+                    </l2>
+                    <l2 n="Connectors" />
+                    <v n="Id">249L</v>
                   </o>
                   <o>
                     <v n="ILActive">false</v>
@@ -237,22 +447,22 @@ END_VAR
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"bSA_ResetExe"</v>
+                                <v n="Operand">"FALSE"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
                                 <v n="Address">""</v>
                                 <o n="Flags" t="Flags">
                                   <v n="Flags">0</v>
-                                  <v n="Fixed">false</v>
+                                  <v n="Fixed">true</v>
                                   <v n="Extensible">false</v>
                                 </o>
                                 <v n="LValue">false</v>
                                 <v n="Boolean">true</v>
                                 <v n="IsInstance">false</v>
-                                <v n="Id">19L</v>
+                                <v n="Id">264L</v>
                               </o>
-                              <v n="Id">18L</v>
+                              <v n="Id">263L</v>
                             </o>
                           </l2>
                           <o n="InputParam" t="ParamList">
@@ -444,7 +654,7 @@ END_VAR
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"bSA_PowerEnCmd"</v>
+                                <v n="Operand">"bCmdPowerEnable"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -463,7 +673,7 @@ END_VAR
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"bSA_PowerEnPositive"</v>
+                                <v n="Operand">"bCmdPowerEnablePositive"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -482,7 +692,7 @@ END_VAR
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"bSA_PowerEnNegative"</v>
+                                <v n="Operand">"bCmdPowerEnableNegative"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -774,7 +984,7 @@ END_VAR
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"bSA_HomeExe"</v>
+                                <v n="Operand">"bCmdHomeExecute"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1340,7 +1550,7 @@ END_VAR
                               <v n="LValue">true</v>
                               <v n="Boolean">true</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">177L</v>
+                              <v n="Id">310L</v>
                             </o>
                           </l2>
                         </o>
@@ -1352,7 +1562,7 @@ END_VAR
                         <o n="RValue" t="BoxTreeBox">
                           <v n="BoxType">"MC_MoveVelocity"</v>
                           <o n="Instance" t="Operand">
-                            <v n="Operand">"fbSA_Vel1"</v>
+                            <v n="Operand">"fbMoveVelocity"</v>
                             <v n="Type">"MC_MoveVelocity"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -1365,7 +1575,7 @@ END_VAR
                             <v n="LValue">false</v>
                             <v n="Boolean">false</v>
                             <v n="IsInstance">true</v>
-                            <v n="Id">106L</v>
+                            <v n="Id">285L</v>
                           </o>
                           <o n="OutputItems" t="OutputItemList">
                             <l2 n="OutputItems" cet="Operand">
@@ -1384,7 +1594,7 @@ END_VAR
                                 <v n="LValue">true</v>
                                 <v n="Boolean">false</v>
                                 <v n="IsInstance">false</v>
-                                <v n="Id">108L</v>
+                                <v n="Id">287L</v>
                               </o>
                               <o>
                                 <v n="Operand">"stSA_VelSts1.Active"</v>
@@ -1400,7 +1610,7 @@ END_VAR
                                 <v n="LValue">true</v>
                                 <v n="Boolean">false</v>
                                 <v n="IsInstance">false</v>
-                                <v n="Id">109L</v>
+                                <v n="Id">288L</v>
                               </o>
                               <o>
                                 <v n="Operand">"stSA_VelSts1.CmdAborted"</v>
@@ -1416,7 +1626,7 @@ END_VAR
                                 <v n="LValue">true</v>
                                 <v n="Boolean">false</v>
                                 <v n="IsInstance">false</v>
-                                <v n="Id">110L</v>
+                                <v n="Id">289L</v>
                               </o>
                               <o>
                                 <v n="Operand">"stSA_VelSts1.Error"</v>
@@ -1432,7 +1642,7 @@ END_VAR
                                 <v n="LValue">true</v>
                                 <v n="Boolean">false</v>
                                 <v n="IsInstance">false</v>
-                                <v n="Id">111L</v>
+                                <v n="Id">290L</v>
                               </o>
                               <o>
                                 <v n="Operand">"stSA_VelSts1.ErrrorID"</v>
@@ -1448,7 +1658,7 @@ END_VAR
                                 <v n="LValue">true</v>
                                 <v n="Boolean">false</v>
                                 <v n="IsInstance">false</v>
-                                <v n="Id">112L</v>
+                                <v n="Id">291L</v>
                               </o>
                             </l2>
                           </o>
@@ -1474,9 +1684,9 @@ END_VAR
                                 <v n="LValue">false</v>
                                 <v n="Boolean">false</v>
                                 <v n="IsInstance">false</v>
-                                <v n="Id">103L</v>
+                                <v n="Id">293L</v>
                               </o>
-                              <v n="Id">102L</v>
+                              <v n="Id">292L</v>
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
@@ -1493,9 +1703,9 @@ END_VAR
                                 <v n="LValue">false</v>
                                 <v n="Boolean">false</v>
                                 <v n="IsInstance">false</v>
-                                <v n="Id">105L</v>
+                                <v n="Id">295L</v>
                               </o>
-                              <v n="Id">104L</v>
+                              <v n="Id">294L</v>
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
@@ -1512,9 +1722,9 @@ END_VAR
                                 <v n="LValue">false</v>
                                 <v n="Boolean">false</v>
                                 <v n="IsInstance">false</v>
-                                <v n="Id">114L</v>
+                                <v n="Id">297L</v>
                               </o>
-                              <v n="Id">113L</v>
+                              <v n="Id">296L</v>
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
@@ -1531,9 +1741,9 @@ END_VAR
                                 <v n="LValue">false</v>
                                 <v n="Boolean">false</v>
                                 <v n="IsInstance">false</v>
-                                <v n="Id">116L</v>
+                                <v n="Id">299L</v>
                               </o>
-                              <v n="Id">115L</v>
+                              <v n="Id">298L</v>
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
@@ -1550,9 +1760,9 @@ END_VAR
                                 <v n="LValue">false</v>
                                 <v n="Boolean">false</v>
                                 <v n="IsInstance">false</v>
-                                <v n="Id">118L</v>
+                                <v n="Id">301L</v>
                               </o>
-                              <v n="Id">117L</v>
+                              <v n="Id">300L</v>
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
@@ -1569,9 +1779,9 @@ END_VAR
                                 <v n="LValue">false</v>
                                 <v n="Boolean">false</v>
                                 <v n="IsInstance">false</v>
-                                <v n="Id">120L</v>
+                                <v n="Id">303L</v>
                               </o>
-                              <v n="Id">119L</v>
+                              <v n="Id">302L</v>
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
@@ -1588,9 +1798,9 @@ END_VAR
                                 <v n="LValue">false</v>
                                 <v n="Boolean">false</v>
                                 <v n="IsInstance">false</v>
-                                <v n="Id">122L</v>
+                                <v n="Id">305L</v>
                               </o>
-                              <v n="Id">121L</v>
+                              <v n="Id">304L</v>
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
@@ -1607,9 +1817,9 @@ END_VAR
                                 <v n="LValue">false</v>
                                 <v n="Boolean">false</v>
                                 <v n="IsInstance">false</v>
-                                <v n="Id">124L</v>
+                                <v n="Id">307L</v>
                               </o>
-                              <v n="Id">123L</v>
+                              <v n="Id">306L</v>
                             </o>
                             <o>
                               <o n="Operand" t="Operand">
@@ -1626,9 +1836,9 @@ END_VAR
                                 <v n="LValue">false</v>
                                 <v n="Boolean">false</v>
                                 <v n="IsInstance">false</v>
-                                <v n="Id">126L</v>
+                                <v n="Id">309L</v>
                               </o>
-                              <v n="Id">125L</v>
+                              <v n="Id">308L</v>
                             </o>
                           </l2>
                           <o n="InputParam" t="ParamList">
@@ -1679,13 +1889,13 @@ END_VAR
                           <n n="STSnippet" />
                           <v n="ContainsExtensibleInputs">false</v>
                           <v n="ProvidesSTSnippet">false</v>
-                          <v n="Id">107L</v>
+                          <v n="Id">286L</v>
                         </o>
-                        <v n="Id">178L</v>
+                        <v n="Id">311L</v>
                       </o>
                     </l2>
                     <l2 n="Connectors" />
-                    <v n="Id">97L</v>
+                    <v n="Id">284L</v>
                   </o>
                   <o>
                     <v n="ILActive">false</v>
@@ -1701,7 +1911,7 @@ END_VAR
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
                             <o>
-                              <v n="Operand">"stSA_RelSts1.Done"</v>
+                              <v n="Operand">"stSA_MoveRelative.Done"</v>
                               <v n="Type">"BOOL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -1726,7 +1936,7 @@ END_VAR
                         <o n="RValue" t="BoxTreeBox">
                           <v n="BoxType">"MC_MoveRelative"</v>
                           <o n="Instance" t="Operand">
-                            <v n="Operand">"fbSA_Rel1"</v>
+                            <v n="Operand">"fbMoveRelative"</v>
                             <v n="Type">"MC_MoveRelative"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -1745,7 +1955,7 @@ END_VAR
                             <l2 n="OutputItems" cet="Operand">
                               <n />
                               <o>
-                                <v n="Operand">"stSA_RelSts1.Busy"</v>
+                                <v n="Operand">"stSA_MoveRelative.Busy"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1761,7 +1971,7 @@ END_VAR
                                 <v n="Id">129L</v>
                               </o>
                               <o>
-                                <v n="Operand">"stSA_RelSts1.Active"</v>
+                                <v n="Operand">"stSA_MoveRelative.Active"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1777,7 +1987,7 @@ END_VAR
                                 <v n="Id">130L</v>
                               </o>
                               <o>
-                                <v n="Operand">"stSA_RelSts1.CmdAborted"</v>
+                                <v n="Operand">"stSA_MoveRelative.CmdAborted"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1793,7 +2003,7 @@ END_VAR
                                 <v n="Id">131L</v>
                               </o>
                               <o>
-                                <v n="Operand">"stSA_RelSts1.Error"</v>
+                                <v n="Operand">"stSA_MoveRelative.Error"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1809,7 +2019,7 @@ END_VAR
                                 <v n="Id">132L</v>
                               </o>
                               <o>
-                                <v n="Operand">"stSA_RelSts1.ErrrorID"</v>
+                                <v n="Operand">"stSA_MoveRelative.ErrrorID"</v>
                                 <v n="Type">"UDINT"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -2100,7 +2310,7 @@ END_VAR
                         <o n="RValue" t="BoxTreeBox">
                           <v n="BoxType">"MC_MoveAbsolute"</v>
                           <o n="Instance" t="Operand">
-                            <v n="Operand">"fbSA_Abs1"</v>
+                            <v n="Operand">"fbMoveAbsolute"</v>
                             <v n="Type">"MC_MoveAbsolute"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -2210,7 +2420,7 @@ END_VAR
                             <o>
                               <o n="Operand" t="Operand">
                                 <v n="Operand">"SingleAxis"</v>
-                                <v n="Type">"AXIS_REF[REF]"</v>
+                                <v n="Type">"AXIS_REF"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
                                 <v n="Address">""</v>
@@ -2474,7 +2684,7 @@ END_VAR
                         <o n="RValue" t="BoxTreeBox">
                           <v n="BoxType">"MC_Halt"</v>
                           <o n="Instance" t="Operand">
-                            <v n="Operand">"fbSA_Halt"</v>
+                            <v n="Operand">"fbHalt"</v>
                             <v n="Type">"MC_Halt"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -2584,7 +2794,7 @@ END_VAR
                             <o>
                               <o n="Operand" t="Operand">
                                 <v n="Operand">"SingleAxis"</v>
-                                <v n="Type">"AXIS_REF[REF]"</v>
+                                <v n="Type">"AXIS_REF"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
                                 <v n="Address">""</v>
@@ -2785,7 +2995,7 @@ END_VAR
                         <o n="RValue" t="BoxTreeBox">
                           <v n="BoxType">"MC_Stop"</v>
                           <o n="Instance" t="Operand">
-                            <v n="Operand">"fbSA_Stop"</v>
+                            <v n="Operand">"fbStop"</v>
                             <v n="Type">"MC_Stop"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -2895,7 +3105,7 @@ END_VAR
                             <o>
                               <o n="Operand" t="Operand">
                                 <v n="Operand">"SingleAxis"</v>
-                                <v n="Type">"AXIS_REF[REF]"</v>
+                                <v n="Type">"AXIS_REF"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
                                 <v n="Address">""</v>
@@ -3061,8 +3271,8 @@ END_VAR
         </NWL>
       </Implementation>
     </Method>
-    <Method Name="UpdateStatus_LD" Id="{17d03984-c95a-4c5d-b9a7-5c1d935ee030}">
-      <Declaration><![CDATA[METHOD UpdateStatus_LD : BOOL
+    <Method Name="GetStatus" Id="{17d03984-c95a-4c5d-b9a7-5c1d935ee030}">
+      <Declaration><![CDATA[METHOD PRIVATE GetStatus : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
@@ -3079,34 +3289,16 @@ END_VAR
                     <v n="FBDValid">false</v>
                     <v n="ILValid">false</v>
                     <l2 n="ILLines" />
-                    <v n="Comment">"https://infosys.beckhoff.com/english.php?content=../content/1033/tcplclib_tc2_mc2/index.html&amp;id="</v>
+                    <v n="Comment">"https://infosys.beckhoff.com/content/1033/tcplclib_tc2_mc2/70063115.html?id=6037410941418876873"</v>
                     <v n="Title">""</v>
                     <v n="Label">""</v>
                     <v n="OutCommented">false</v>
-                    <l2 n="NetworkItems" cet="BoxTreeBox">
+                    <l2 n="NetworkItems" cet="BoxTreeAssign">
                       <o>
-                        <v n="BoxType">"MC_ReadActualPosition"</v>
-                        <o n="Instance" t="Operand">
-                          <v n="Operand">"fbSA_GetPosition"</v>
-                          <v n="Type">"MC_ReadActualPosition"</v>
-                          <v n="Comment">""</v>
-                          <v n="SymbolComment">""</v>
-                          <v n="Address">""</v>
-                          <o n="Flags" t="Flags">
-                            <v n="Flags">0</v>
-                            <v n="Fixed">false</v>
-                            <v n="Extensible">false</v>
-                          </o>
-                          <v n="LValue">false</v>
-                          <v n="Boolean">false</v>
-                          <v n="IsInstance">true</v>
-                          <v n="Id">13L</v>
-                        </o>
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
-                            <n />
                             <o>
-                              <v n="Operand">""</v>
+                              <v n="Operand">"stSA_GetPosition.Valid"</v>
                               <v n="Type">"BOOL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -3117,139 +3309,185 @@ END_VAR
                                 <v n="Extensible">false</v>
                               </o>
                               <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
+                              <v n="Boolean">true</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">15L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <v n="Type">"BOOL"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">16L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <v n="Type">"UDINT"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">17L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">""</v>
-                              <v n="Type">"LREAL"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">18L</v>
+                              <v n="Id">26L</v>
                             </o>
                           </l2>
                         </o>
                         <o n="Flags" t="Flags">
                           <v n="Flags">0</v>
-                          <v n="Fixed">true</v>
+                          <v n="Fixed">false</v>
                           <v n="Extensible">false</v>
                         </o>
-                        <n n="InputFlags" />
-                        <l2 n="InputItems" cet="BoxTreeOperand">
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">"SingleAxis"</v>
-                              <v n="Type">"AXIS_REF"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">20L</v>
+                        <o n="RValue" t="BoxTreeBox">
+                          <v n="BoxType">"MC_ReadActualPosition"</v>
+                          <o n="Instance" t="Operand">
+                            <v n="Operand">"fbSA_GetPosition"</v>
+                            <v n="Type">"MC_ReadActualPosition"</v>
+                            <v n="Comment">""</v>
+                            <v n="SymbolComment">""</v>
+                            <v n="Address">""</v>
+                            <o n="Flags" t="Flags">
+                              <v n="Flags">0</v>
+                              <v n="Fixed">false</v>
+                              <v n="Extensible">false</v>
                             </o>
-                            <v n="Id">19L</v>
+                            <v n="LValue">false</v>
+                            <v n="Boolean">false</v>
+                            <v n="IsInstance">true</v>
+                            <v n="Id">13L</v>
                           </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">"TRUE"</v>
-                              <v n="Type">"BOOL"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
+                          <o n="OutputItems" t="OutputItemList">
+                            <l2 n="OutputItems" cet="Operand">
+                              <n />
+                              <o>
+                                <v n="Operand">"stSA_GetPosition.Busy"</v>
+                                <v n="Type">"BOOL"</v>
+                                <v n="Comment">""</v>
+                                <v n="SymbolComment">""</v>
+                                <v n="Address">""</v>
+                                <o n="Flags" t="Flags">
+                                  <v n="Flags">0</v>
+                                  <v n="Fixed">false</v>
+                                  <v n="Extensible">false</v>
+                                </o>
+                                <v n="LValue">true</v>
+                                <v n="Boolean">false</v>
+                                <v n="IsInstance">false</v>
+                                <v n="Id">15L</v>
                               </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">22L</v>
-                            </o>
-                            <v n="Id">21L</v>
+                              <o>
+                                <v n="Operand">"stSA_GetPosition.Error"</v>
+                                <v n="Type">"BOOL"</v>
+                                <v n="Comment">""</v>
+                                <v n="SymbolComment">""</v>
+                                <v n="Address">""</v>
+                                <o n="Flags" t="Flags">
+                                  <v n="Flags">0</v>
+                                  <v n="Fixed">false</v>
+                                  <v n="Extensible">false</v>
+                                </o>
+                                <v n="LValue">true</v>
+                                <v n="Boolean">false</v>
+                                <v n="IsInstance">false</v>
+                                <v n="Id">16L</v>
+                              </o>
+                              <o>
+                                <v n="Operand">"stSA_GetPosition.ErrrorID"</v>
+                                <v n="Type">"UDINT"</v>
+                                <v n="Comment">""</v>
+                                <v n="SymbolComment">""</v>
+                                <v n="Address">""</v>
+                                <o n="Flags" t="Flags">
+                                  <v n="Flags">0</v>
+                                  <v n="Fixed">false</v>
+                                  <v n="Extensible">false</v>
+                                </o>
+                                <v n="LValue">true</v>
+                                <v n="Boolean">false</v>
+                                <v n="IsInstance">false</v>
+                                <v n="Id">17L</v>
+                              </o>
+                              <o>
+                                <v n="Operand">"stSA_GetPosition.Value"</v>
+                                <v n="Type">"LREAL"</v>
+                                <v n="Comment">""</v>
+                                <v n="SymbolComment">""</v>
+                                <v n="Address">""</v>
+                                <o n="Flags" t="Flags">
+                                  <v n="Flags">0</v>
+                                  <v n="Fixed">false</v>
+                                  <v n="Extensible">false</v>
+                                </o>
+                                <v n="LValue">true</v>
+                                <v n="Boolean">false</v>
+                                <v n="IsInstance">false</v>
+                                <v n="Id">18L</v>
+                              </o>
+                            </l2>
                           </o>
-                        </l2>
-                        <o n="InputParam" t="ParamList">
-                          <l2 n="Names" cet="String">
-                            <v>Axis</v>
-                            <v>Enable</v>
+                          <o n="Flags" t="Flags">
+                            <v n="Flags">0</v>
+                            <v n="Fixed">true</v>
+                            <v n="Extensible">false</v>
+                          </o>
+                          <n n="InputFlags" />
+                          <l2 n="InputItems" cet="BoxTreeOperand">
+                            <o>
+                              <o n="Operand" t="Operand">
+                                <v n="Operand">"SingleAxis"</v>
+                                <v n="Type">"AXIS_REF"</v>
+                                <v n="Comment">""</v>
+                                <v n="SymbolComment">""</v>
+                                <v n="Address">""</v>
+                                <o n="Flags" t="Flags">
+                                  <v n="Flags">0</v>
+                                  <v n="Fixed">false</v>
+                                  <v n="Extensible">false</v>
+                                </o>
+                                <v n="LValue">false</v>
+                                <v n="Boolean">false</v>
+                                <v n="IsInstance">false</v>
+                                <v n="Id">20L</v>
+                              </o>
+                              <v n="Id">19L</v>
+                            </o>
+                            <o>
+                              <o n="Operand" t="Operand">
+                                <v n="Operand">"TRUE"</v>
+                                <v n="Type">"BOOL"</v>
+                                <v n="Comment">""</v>
+                                <v n="SymbolComment">""</v>
+                                <v n="Address">""</v>
+                                <o n="Flags" t="Flags">
+                                  <v n="Flags">0</v>
+                                  <v n="Fixed">false</v>
+                                  <v n="Extensible">false</v>
+                                </o>
+                                <v n="LValue">false</v>
+                                <v n="Boolean">false</v>
+                                <v n="IsInstance">false</v>
+                                <v n="Id">22L</v>
+                              </o>
+                              <v n="Id">21L</v>
+                            </o>
                           </l2>
-                          <l2 n="Types" cet="String">
-                            <v>AXIS_REF[REF]</v>
-                            <v>BOOL</v>
-                          </l2>
+                          <o n="InputParam" t="ParamList">
+                            <l2 n="Names" cet="String">
+                              <v>Axis</v>
+                              <v>Enable</v>
+                            </l2>
+                            <l2 n="Types" cet="String">
+                              <v>AXIS_REF[REF]</v>
+                              <v>BOOL</v>
+                            </l2>
+                          </o>
+                          <o n="OutputParam" t="ParamList">
+                            <l2 n="Names" cet="String">
+                              <v>Valid</v>
+                              <v>Busy</v>
+                              <v>Error</v>
+                              <v>ErrorID</v>
+                              <v>Position</v>
+                            </l2>
+                            <l2 n="Types" cet="String">
+                              <v>BOOL</v>
+                              <v>BOOL</v>
+                              <v>BOOL</v>
+                              <v>UDINT</v>
+                              <v>LREAL</v>
+                            </l2>
+                          </o>
+                          <v n="CallType" t="Operator">FunctionBlock</v>
+                          <v n="EN">false</v>
+                          <v n="ENO">false</v>
+                          <n n="STSnippet" />
+                          <v n="ContainsExtensibleInputs">false</v>
+                          <v n="ProvidesSTSnippet">false</v>
+                          <v n="Id">14L</v>
                         </o>
-                        <o n="OutputParam" t="ParamList">
-                          <l2 n="Names" cet="String">
-                            <v>Valid</v>
-                            <v>Busy</v>
-                            <v>Error</v>
-                            <v>ErrorID</v>
-                            <v>Position</v>
-                          </l2>
-                          <l2 n="Types" cet="String">
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>BOOL</v>
-                            <v>UDINT</v>
-                            <v>LREAL</v>
-                          </l2>
-                        </o>
-                        <v n="CallType" t="Operator">FunctionBlock</v>
-                        <v n="EN">false</v>
-                        <v n="ENO">false</v>
-                        <n n="STSnippet" />
-                        <v n="ContainsExtensibleInputs">false</v>
-                        <v n="ProvidesSTSnippet">false</v>
-                        <v n="Id">14L</v>
+                        <v n="Id">27L</v>
                       </o>
                     </l2>
                     <l2 n="Connectors" />
@@ -3275,6 +3513,7 @@ END_VAR
             </Data>
             <TypeList>
               <Type n="Boolean">System.Boolean</Type>
+              <Type n="BoxTreeAssign">{9873c309-1f09-4ebf-9078-42d8057ef11b}</Type>
               <Type n="BoxTreeBox">{acfc6f68-8e3a-4af5-bf81-3dd512095a46}</Type>
               <Type n="BoxTreeOperand">{9de7f100-1b87-424c-a62e-45b0cfc85ed2}</Type>
               <Type n="Flags">{668066f2-6069-46b3-8962-8db8d13d7db2}</Type>
@@ -3290,6 +3529,17 @@ END_VAR
             </TypeList>
           </XmlArchive>
         </NWL>
+      </Implementation>
+    </Method>
+    <Method Name="UpdateAll" Id="{da391fcc-c368-42e2-a025-3839f89ed74f}">
+      <Declaration><![CDATA[(* Process all communication for the operaiton of the motor*)
+METHOD PUBLIC UpdateAll : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[ExecuteCommands();
+GetStatus();]]></ST>
       </Implementation>
     </Method>
   </POU>

@@ -3,70 +3,7 @@
   <GVL Name="GVL_SA" Id="{602e9937-722f-4362-8e42-e6d4fb7e5893}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
-	myMotor : FB_MotorControl;	
-
-(*
-	//Single Axis 'SA'
-	SingleAxis 	:	AXIS_REF;
-	
-	//Motion control function block instant variable 'fbSA_'
-	fbSA_Reset	:	MC_RESET;
-	fbSA_Power	:	MC_POWER;
-	fbSA_Home	: 	MC_HOME;
-	fbSA_Jog	:	MC_JOG;
-	
-	fbSA_Vel1	: MC_MoveVelocity;
-	fbSA_Rel1	: MC_MoveRelative;
-	fbSA_Abs1	: MC_MoveAbsolute;
-	
-	fbSA_Halt	: MC_Halt;
-	fbSA_Stop	: MC_Stop;
-	
-	fbSA_GetPosition : MC_ReadActualPosition;
-	
-	//Input: Command
-	bSA_ResetExe		:	BOOL	;
-	
-	bSA_PowerEnCmd		:	BOOL	;
-	bSA_PowerEnPositive	:	BOOL	;
-	bSA_PowerEnNegative	:	BOOL	;
-	
-	bSA_HomeExe			:	BOOL	;
-	bSA_HomeCamInput	:	BOOL	;
-	
-	bSA_JogFwd			:	BOOL	;
-	bSA_JogRev			:	BOOL	;
-	
-	bSA_HaltExe			: 	BOOL	;
-	bSA_StopExe			: 	BOOL	;
-	
-	
-	
-	stSA_VelCmd1			: ST_MC_CMD	;
-	stSA_RelCmd1			: ST_MC_CMD	;
-	stSA_AbsCmd1			: ST_MC_CMD	;
-	
-	//Variables / Parameters
-	lrSA_PowerOverride	: LREAL;
-	lrSA_HomePosition	: LREAL;
-	lrSA_SetPosition	: LREAL;
-	lrSA_JogVelocity	: LREAL;
-	
-	//Status
-	stSA_Reset			: ST_MC_Status;
-	stSA_Power			: ST_MC_Status;
-	stSA_Home			: ST_MC_Status;
-	stSA_SetPosition	: ST_MC_Status;
-	stSA_Jog			: ST_MC_Status;
-	
-	stSA_VelSts1		: ST_MC_Status;
-	stSA_RelSts1		: ST_MC_Status;
-	stSA_AbsSts1		: ST_MC_Status;
-	
-	stSA_Halt			: ST_MC_Status;
-	stSA_Stop			: ST_MC_Status;
-*)	
-	
+	Motor1 : FB_MotorControl;	
 	
 END_VAR]]></Declaration>
   </GVL>

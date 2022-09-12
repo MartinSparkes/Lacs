@@ -12,6 +12,10 @@ STRUCT
 	CmdAborted	:	BOOL;
 	InVelocity	:	BOOL;
 	ErrrorID	:	UDINT;
+	
+	Value		: 	LREAL;
+	Valid		: 	BOOL;
+	
 
 END_STRUCT
 END_TYPE

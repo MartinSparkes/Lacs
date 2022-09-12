@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <DUT Name="ST_MC_Base" Id="{67d43c8b-4eaa-4c71-8a3f-73b554743b83}">
+    <Declaration><![CDATA[TYPE ST_MC_Base :
+STRUCT
+	Busy		:	BOOL;
+	Error		:	BOOL;
+	ErrrorID	:	UDINT;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>
