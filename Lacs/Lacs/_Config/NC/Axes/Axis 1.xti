@@ -1470,7 +1470,7 @@ External Setpoint Generation:
 			</Vars>
 		</Encoder>
 		<Drive Name="Drive" DrvType="16">
-			<DrvPara MaxCount="#xffffffff">
+			<DrvPara MaxCount="#xffffffff" DriveControlDWord="#x00020000">
 				<Analog TorqueSetpointScale="10" ScaleFactorActTorque="0.1"/>
 				<TimeComp TaskDelayCycles="1"/>
 			</DrvPara>
@@ -1545,24 +1545,4 @@ External Setpoint Generation:
 			</Var>
 		</Vars>
 	</Axis>
-	<Mappings>
-		<OwnerA>
-			<OwnerB Name="TIID^Device 3 (EtherCAT)^Drive 5 (ECT60V202)">
-				<Link VarA="Drive^Inputs^In^nDcOutputTime" VarB="InfoData^DcOutputShift"/>
-				<Link VarA="Drive^Inputs^In^nState1" VarB="Transmit PDO 1^Status Word" Size="8"/>
-				<Link VarA="Drive^Inputs^In^nState2" VarB="Transmit PDO 1^Status Word" Size="8" OffsB="8"/>
-				<Link VarA="Drive^Inputs^In^nState4" VarB="WcState^InputToggle" Size="1" OffsA="1"/>
-				<Link VarA="Drive^Inputs^In^nState4" VarB="WcState^WcState" Size="1"/>
-				<Link VarA="Drive^Inputs^In^nState5" VarB="Transmit PDO 1^Modes of Operation display"/>
-				<Link VarA="Drive^Outputs^Out^nCtrl1" VarB="Receive PDO 1^Control Word" Size="8"/>
-				<Link VarA="Drive^Outputs^Out^nCtrl2" VarB="Receive PDO 1^Control Word" Size="8" OffsB="8"/>
-				<Link VarA="Drive^Outputs^Out^nCtrl5" VarB="Receive PDO 1^ModeOfOperation"/>
-				<Link VarA="Drive^Outputs^Out^nDataOut1" VarB="Receive PDO 1^Profile Target Position"/>
-				<Link VarA="Enc^Inputs^In^nDataIn1" VarB="Transmit PDO 1^Position Actual Value"/>
-				<Link VarA="Enc^Inputs^In^nDcInputTime" VarB="InfoData^DcInputShift"/>
-				<Link VarA="Enc^Inputs^In^nState4" VarB="WcState^InputToggle" Size="1" OffsA="1"/>
-				<Link VarA="Enc^Inputs^In^nState4" VarB="WcState^WcState" Size="1"/>
-			</OwnerB>
-		</OwnerA>
-	</Mappings>
 </TcSmItem>

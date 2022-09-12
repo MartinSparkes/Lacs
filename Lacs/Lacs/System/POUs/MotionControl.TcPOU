@@ -2981,8 +2981,8 @@ END_VAR
                       <o>
                         <v n="BoxType">"MC_ReadActualPosition"</v>
                         <o n="Instance" t="Operand">
-                          <v n="Operand">"MC_ReadActualPosition"</v>
-                          <v n="Type">"MC_READACTUALPOSITION"</v>
+                          <v n="Operand">"GVL_SA.fbSA_GetPosition"</v>
+                          <v n="Type">"MC_ReadActualPosition"</v>
                           <v n="Comment">""</v>
                           <v n="SymbolComment">""</v>
                           <v n="Address">""</v>
@@ -3000,7 +3000,7 @@ END_VAR
                           <l2 n="OutputItems" cet="Operand">
                             <n />
                             <o>
-                              <v n="Operand">"???"</v>
+                              <v n="Operand">""</v>
                               <v n="Type">"BOOL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -3016,7 +3016,7 @@ END_VAR
                               <v n="Id">244L</v>
                             </o>
                             <o>
-                              <v n="Operand">"???"</v>
+                              <v n="Operand">""</v>
                               <v n="Type">"BOOL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -3032,7 +3032,7 @@ END_VAR
                               <v n="Id">245L</v>
                             </o>
                             <o>
-                              <v n="Operand">"???"</v>
+                              <v n="Operand">""</v>
                               <v n="Type">"UDINT"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -3048,7 +3048,7 @@ END_VAR
                               <v n="Id">246L</v>
                             </o>
                             <o>
-                              <v n="Operand">"???"</v>
+                              <v n="Operand">""</v>
                               <v n="Type">"LREAL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>

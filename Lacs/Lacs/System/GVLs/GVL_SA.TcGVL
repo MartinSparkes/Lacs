@@ -19,6 +19,8 @@ VAR_GLOBAL
 	fbSA_Halt	: MC_Halt;
 	fbSA_Stop	: MC_Stop;
 	
+	fbSA_GetPosition : MC_ReadActualPosition;
+	
 	//Input: Command
 	bSA_ResetExe		:	BOOL	;
 	
