@@ -975,7 +975,7 @@ External Setpoint Generation:
 				<Defines></Defines>
 			</Variant>
 		</ProjectVariant>
-		<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="System\System.tmc" TmcHash="{E28A8CDE-0D9B-4121-6AB3-A1BFC63F1D02}">
+		<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="System\System.tmc" TmcHash="{7F8940DE-2978-AB0D-1E53-C5F66EFCAC26}">
 			<Name>System Instance</Name>
 			<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 			<Vars VarGrpType="1">

@@ -4,7 +4,6 @@
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
 	Motor1 : FB_MotorControl;	
-	
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
