@@ -128,7 +128,7 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[//Change Test]]></ST>
+        <ST><![CDATA[]]></ST>
       </Implementation>
     </Method>
     <Method Name="ExecuteCommands" Id="{489d89ce-c8ae-4ad4-85e5-887c50bac62e}">
