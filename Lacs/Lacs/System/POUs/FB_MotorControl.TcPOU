@@ -3,7 +3,7 @@
   <POU Name="FB_MotorControl" Id="{9b26cca3-dfb1-468b-828a-5d52f957fd6b}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_MotorControl
 VAR_INPUT
-	axisRef 	:	AXIS_REF;
+	AxisRef 	:	AXIS_REF;
 	//Position
 	//Ready
 	//Reset
@@ -24,12 +24,25 @@ VAR
 
 	//stMC_Reset : ST_MC_Reset;
 	
-	fbSA_Reset	:	MC_RESET;
+
 	stSA_Reset	:   ST_MC_Status;
 	
-	fbSA_Power	:	MC_POWER;
-	fbSA_Home	: 	MC_HOME;
-	fbSA_Jog	:	MC_JOG;
+	
+	
+	fbMcPower	:	MC_POWER;
+	fbMcHome	: 	MC_HOME;
+	fbMcJog		:	MC_JOG;
+	
+	// Global
+	bError 		: BOOL	; // := TRUE;
+	nErrorID 	: LINT	; //Check type
+	
+	//Reset
+	fbMcReset	:	MC_RESET;
+	fbTriggerReset : R_TRIG;
+	bResetDone : BOOL := FALSE;
+	
+	
 	
 	fbMoveVelocity	: MC_MoveVelocity;
 	fbMoveRelative	: MC_MoveRelative;
@@ -84,7 +97,7 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[axisRef.ReadStatus();
+      <ST><![CDATA[AxisRef.ReadStatus();
 GetStatus();
 //Here the state machine needs to be processed or farmed out.
 
@@ -201,7 +214,7 @@ END_VAR]]></Declaration>
                         <o n="RValue" t="BoxTreeBox">
                           <v n="BoxType">"MC_Reset"</v>
                           <o n="Instance" t="Operand">
-                            <v n="Operand">"fbSA_Reset"</v>
+                            <v n="Operand">"fbMcReset"</v>
                             <v n="Type">"MC_RESET"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -278,7 +291,7 @@ END_VAR]]></Declaration>
                           <l2 n="InputItems" cet="BoxTreeOperand">
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"axisRef"</v>
+                                <v n="Operand">"AxisRef"</v>
                                 <v n="Type">"AXIS_REF"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -392,7 +405,7 @@ END_VAR]]></Declaration>
                         <o n="RValue" t="BoxTreeBox">
                           <v n="BoxType">"MC_Power"</v>
                           <o n="Instance" t="Operand">
-                            <v n="Operand">"fbSA_Power"</v>
+                            <v n="Operand">"fbMcPower"</v>
                             <v n="Type">"MC_POWER"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -485,7 +498,7 @@ END_VAR]]></Declaration>
                           <l2 n="InputItems" cet="BoxTreeOperand">
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"axisRef"</v>
+                                <v n="Operand">"AxisRef"</v>
                                 <v n="Type">"AXIS_REF"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -707,7 +720,7 @@ bCalibrationCam looks to be an external way to stop homing"</v>
                         <o n="RValue" t="BoxTreeBox">
                           <v n="BoxType">"MC_Home"</v>
                           <o n="Instance" t="Operand">
-                            <v n="Operand">"fbSA_Home"</v>
+                            <v n="Operand">"fbMcHome"</v>
                             <v n="Type">"MC_HOME"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -816,7 +829,7 @@ bCalibrationCam looks to be an external way to stop homing"</v>
                           <l2 n="InputItems" cet="BoxTreeOperand">
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"axisRef"</v>
+                                <v n="Operand">"AxisRef"</v>
                                 <v n="Type">"AXIS_REF"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1039,7 +1052,7 @@ bCalibrationCam looks to be an external way to stop homing"</v>
                         <o n="RValue" t="BoxTreeBox">
                           <v n="BoxType">"MC_Jog"</v>
                           <o n="Instance" t="Operand">
-                            <v n="Operand">"fbSA_Jog"</v>
+                            <v n="Operand">"fbMcJog"</v>
                             <v n="Type">"MC_JOG"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -1148,7 +1161,7 @@ bCalibrationCam looks to be an external way to stop homing"</v>
                           <l2 n="InputItems" cet="BoxTreeOperand">
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"axisRef"</v>
+                                <v n="Operand">"AxisRef"</v>
                                 <v n="Type">"AXIS_REF"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1522,7 +1535,7 @@ bCalibrationCam looks to be an external way to stop homing"</v>
                           <l2 n="InputItems" cet="BoxTreeOperand">
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"axisRef"</v>
+                                <v n="Operand">"AxisRef"</v>
                                 <v n="Type">"AXIS_REF"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -1896,7 +1909,7 @@ bCalibrationCam looks to be an external way to stop homing"</v>
                           <l2 n="InputItems" cet="BoxTreeOperand">
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"axisRef"</v>
+                                <v n="Operand">"AxisRef"</v>
                                 <v n="Type">"AXIS_REF"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -2270,7 +2283,7 @@ bCalibrationCam looks to be an external way to stop homing"</v>
                           <l2 n="InputItems" cet="BoxTreeOperand">
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"axisRef"</v>
+                                <v n="Operand">"AxisRef"</v>
                                 <v n="Type">"AXIS_REF"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -2644,7 +2657,7 @@ bCalibrationCam looks to be an external way to stop homing"</v>
                           <l2 n="InputItems" cet="BoxTreeOperand">
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"axisRef"</v>
+                                <v n="Operand">"AxisRef"</v>
                                 <v n="Type">"AXIS_REF"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -2955,7 +2968,7 @@ bCalibrationCam looks to be an external way to stop homing"</v>
                           <l2 n="InputItems" cet="BoxTreeOperand">
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"axisRef"</v>
+                                <v n="Operand">"AxisRef"</v>
                                 <v n="Type">"AXIS_REF"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -3267,7 +3280,7 @@ END_VAR
                           <l2 n="InputItems" cet="BoxTreeOperand">
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"axisRef"</v>
+                                <v n="Operand">"AxisRef"</v>
                                 <v n="Type">"AXIS_REF"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -3440,10 +3453,38 @@ MoveAbs := TRUE;]]></ST>
     <Method Name="Reset" Id="{db5a6dee-a30a-4d6d-a1e0-2dd4b7425fc5}">
       <Declaration><![CDATA[METHOD Reset : BOOL
 VAR_INPUT
+	bDriveReset : Bool;
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[// Indicate that the Reset is in progress
+IF NOT bDriveReset THEN
+	bResetDone := FALSE;
+END_IF
+
+// Trigger
+fbTriggerReset(CLK := bDriveReset);
+
+IF fbTriggerReset.Q THEN
+	//Is this meant to be sending a halt to the motor at the same time....?
+	//If so why not as a command - seems more of a status....
+	
+	//bHaltDone := FALSE;
+	fbMcReset(Execute := TRUE, Axis := AxisRef);
+ELSE				
+	fbMcReset(Axis := AxisRef); //What happens to the unchanged values - defaults......TEST?
+END_IF;
+ 
+// Done / Error 
+IF fbMcReset.Done OR fbMcReset.Error THEN
+	bError := fbMcReset.Error;
+	nErrorID := fbMcReset.ErrorID;
+	bResetDone := fbMcReset.Done;
+	
+	fbMcReset(Execute := FALSE, Axis := AxisRef);
+END_IF
+
+]]></ST>
       </Implementation>
     </Method>
     <Method Name="Stop" Id="{bf57bcbf-4a9d-498b-aa4c-b637e7f4fe66}">
