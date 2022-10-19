@@ -107,12 +107,12 @@ GetStatus();
 
 //Has position changed from the current target.....
 
-//  
 
 
 
 
 
+//This should be removed as seperate methods are added.
 ExecuteCommands();
 ]]></ST>
     </Implementation>
@@ -150,9 +150,6 @@ VAR_INPUT
 END_VAR
 
 VAR
-	//fbSA_Reset	:	MC_RESET;
-	//bTest : BOOL;
-	
 END_VAR]]></Declaration>
       <Implementation>
         <NWL>
@@ -214,7 +211,7 @@ END_VAR]]></Declaration>
                         <o n="RValue" t="BoxTreeBox">
                           <v n="BoxType">"MC_Reset"</v>
                           <o n="Instance" t="Operand">
-                            <v n="Operand">"fbMcReset"</v>
+                            <v n="Operand">"fbMCReset"</v>
                             <v n="Type">"MC_RESET"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -227,7 +224,7 @@ END_VAR]]></Declaration>
                             <v n="LValue">false</v>
                             <v n="Boolean">false</v>
                             <v n="IsInstance">true</v>
-                            <v n="Id">11L</v>
+                            <v n="Id">322L</v>
                           </o>
                           <o n="OutputItems" t="OutputItemList">
                             <l2 n="OutputItems" cet="Operand">
@@ -284,7 +281,7 @@ END_VAR]]></Declaration>
                           </o>
                           <o n="Flags" t="Flags">
                             <v n="Flags">0</v>
-                            <v n="Fixed">false</v>
+                            <v n="Fixed">true</v>
                             <v n="Extensible">false</v>
                           </o>
                           <n n="InputFlags" />
@@ -358,7 +355,7 @@ END_VAR]]></Declaration>
                           <n n="STSnippet" />
                           <v n="ContainsExtensibleInputs">false</v>
                           <v n="ProvidesSTSnippet">false</v>
-                          <v n="Id">12L</v>
+                          <v n="Id">323L</v>
                         </o>
                         <v n="Id">87L</v>
                       </o>

@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="FB_Machine" Id="{c1a5a3bc-1c08-4094-8c19-19b890488e0c}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Machine
+VAR_INPUT
+	
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	// =============== Common variables =========================================================
+	bInit								: BOOL;									// True if module parameters are initialized	
+
+	
+	MPG : FB_MPG;
+	
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// =========================================================
+// Call of actions
+
+	// Init
+	General_Init();
+
+	// Mode and state requests
+	//General_Requests();
+	
+	// Enable for power supply, compressed air control and buttons
+	//General_Enable();
+	
+	// Input variables of separating and sorting modules
+	//General_ModuleInputs();
+	
+	// Output variables
+	//General_SetOutput();
+	
+	// State machine
+	//General_StateMachine();
+	
+	// Visualization
+	//General_Visu();
+
+// =========================================================]]></ST>
+    </Implementation>
+    <Method Name="General_Init" Id="{f8d011be-fc17-4815-a997-af47d5450e1b}">
+      <Declaration><![CDATA[METHOD PRIVATE General_Init
+VAR_INPUT
+		
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// =========================================================
+
+IF NOT bInit THEN
+	
+
+	// Init done
+		bInit := TRUE;
+END_IF
+
+// =========================================================]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Operating_Automatic" Id="{714f1efb-65b0-4136-9af7-6fcce3bba863}">
+      <Declaration><![CDATA[METHOD PRIVATE Operating_Automatic
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Operating_Manual" Id="{b6a3ff7a-35ae-4a59-b2d8-519fd3fb4dfd}">
+      <Declaration><![CDATA[METHOD PRIVATE Operating_Manual
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="FB_Stage" Id="{09e0bdae-5873-496b-9bec-5464dd1b8aeb}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Stage
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	// =============== State variables ===========================
+	bHaltRequest				: BOOL;						// True if machine is in state ABORTING or STOPPING
+	bResetRequest				: BOOL;						// True if machine is in state RESETTING
+
+	// =============== Axis ======================================
+	fbAxis						: FB_Axis;					// Function block instance of FB_Axis
+	fAxisVelo					: LREAL;					// Velocity of axis
+		
+	// =============== Common variables ==========================
+	fbTriggerStartingStart		: R_TRIG;					// To diagnose rising edge of starting action starting
+	fbTriggerResetStart			: R_TRIG;					// To diagnose rising edge of starting reset			
+	bMoved						: BOOL;						// History variable to save if axis has moved
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

@@ -3,16 +3,25 @@
   <POU Name="MAIN" Id="{1c4fe094-ad65-4615-9ae0-9ca5c10a1bc8}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
+	fbMachine : FB_Machine;	
+
 	Dummy : BOOL := FALSE;
 	bTest: BOOL := FALSE;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[//GVL_SA.Motor1.UpdateAll();
+      <ST><![CDATA[// =========================================================
+
+fbMachine();
+
+// =========================================================
+
+
+
+//GVL_SA.Motor1.UpdateAll();
 GVL_SA.Motor1();
 
 GVL_SA.Motor1.bStateEnable := TRUE;
-
 
 {IF defined (Pyrometer_Motor)}
 	bTest := TRUE;

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="FB_MPG" Id="{86ca23c2-c29d-42ba-9329-141e9f15a6f6}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_MPG
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Property Name="Value" Id="{1a784deb-81ed-475c-82e7-8f94e4a35191}">
+      <Declaration><![CDATA[PROPERTY Value : UINT]]></Declaration>
+      <Get Name="Get" Id="{4e03f040-7b24-41de-8cea-d51cff1970d6}">
+        <Declaration><![CDATA[VAR
+	EncoderValue :	UINT;
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Value := EncoderValue;
+]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+  </POU>
+</TcPlcObject>
