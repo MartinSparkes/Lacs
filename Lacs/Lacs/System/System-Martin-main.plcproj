@@ -18,25 +18,10 @@
     <CompilerDefines />
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="00_Internal PackAL\DUTs\E_PMLState.TcDUT">
+    <Compile Include="00_InternalState_PackAL\DUTs\E_PMLState.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="00_Internal PackAL\DUTs\E_PMLUnitMode.TcDUT">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="00_Internal PackAL\POUs\PS_PackML_StateMachine_Auto.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="00_Internal PackAL\POUs\PS_PackML_StateMachine_Maintenance.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="00_Internal PackAL\POUs\PS_PackML_StateMachine_Manual.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="00_Internal PackAL\POUs\PS_PackML_StateMachine_SemiAuto.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="00_Internal PackAL\POUs\PS_UnitModeManager.TcPOU">
+    <Compile Include="00_InternalState_PackAL\DUTs\E_PMLUnitMode.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="01_Submodules\FB_Axis.TcPOU">
@@ -98,15 +83,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="00_Internal PackAL" />
-    <Folder Include="00_Internal PackAL\DUTs" />
-    <Folder Include="00_Internal PackAL\POUs" />
+    <Folder Include="00_InternalState_PackAL\DUTs" />
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
     <Folder Include="05_Visu" />
     <Folder Include="03_Machine" />
     <Folder Include="04_Application" />
     <Folder Include="01_Submodules" />
+    <Folder Include="00_InternalState_PackAL" />
     <Folder Include="02_Subsystems" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />

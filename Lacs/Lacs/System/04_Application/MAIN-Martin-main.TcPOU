@@ -5,9 +5,10 @@
 VAR
 	fbMachine : FB_Machine;	
 
+	
+//ANYTHING AFTER HERE IS FOR TESTING ONLY!!!!	
 	Dummy : BOOL := FALSE;
 	bTest: BOOL := FALSE;
-	
 	MAIN_UINT : UINT;
 	
 END_VAR
@@ -18,6 +19,11 @@ END_VAR
 fbMachine();
 
 // =========================================================
+
+
+//ANYTHING AFTER HERE IS FOR TESTING ONLY!!!!
+
+
 
 
 //GVL_SA.Motor1.UpdateAll();
@@ -32,9 +38,5 @@ GVL_SA.Motor1.bStateEnable := TRUE;
 Dummy	:= TRUE;
 ]]></ST>
     </Implementation>
-    <LineIds Name="MAIN">
-      <LineId Id="3" Count="16" />
-      <LineId Id="2" Count="0" />
-    </LineIds>
   </POU>
 </TcPlcObject>

@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="FB_MPG" Id="{86ca23c2-c29d-42ba-9329-141e9f15a6f6}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_MPG
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	//Hardware declared here as only one will ever be connected 
+	EncoderValue 		AT %I* : UINT;	//Measured Value from Encoder
+	SetValueZero	 	AT %Q* : BOOL;	//Request encoder be reset to zero 	
+	bX1					AT %I* : BOOL;	//Multipliers
+	bX10				AT %I* : BOOL;
+	bX100				AT %I* : BOOL;
+	
+	eMPGState : (INIT_START, WAIT_START, RUNNING, STOPPED);	//MPG state machine defenitions
+	
+	nMotorStartPoisition	: UINT	;	//Where was the motor at the beginning
+	
+	nLastEncoderValue		: UINT	;	//Encoder value on last scan cycle
+	nDeltaEncoder			: DINT	;	//Encoder change per scan
+	nDeltaPosition			: DINT	;	//Calculated position request change from start
+		
+	bErrorStateNow 			: BOOL	;	//System in error state
+	bError_LastUnread		: BOOL	;	//Error has occured, and not been read/ cleared
+
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//Check for start cycle
+//Move to main later.....
+//fbGetCurTaskIndex();
+//IF _TaskInfo[fbGetCurTaskIndex.index].FirstCycle THEN
+//    // The code that you want to be executed at the first cycle
+//	eMPGState := INIT_START;
+//END_IF
+
+CASE eMPGState OF
+	INIT_START:
+		bErrorStateNow := TRUE;
+		eMPGState := WAIT_START;
+	
+	WAIT_START:
+	
+		eMPGState := RUNNING;
+	RUNNING:
+		IF (bErrorStateNow) THEN		//If current error state
+			nDeltaPosition := 0;		//No change in position possible	
+		ELSE
+			//Update values
+			nDeltaEncoder  := nLastEncoderValue - EncoderValue;
+			nDeltaPosition := nDeltaPosition + nDeltaEncoder * ScaleFactor;			
+		END_IF
+
+END_CASE
+
+nLastEncoderValue := EncoderValue;	//Next scan will be only on change in encoder position
+									//Protects from changes when in error state
+]]></ST>
+    </Implementation>
+    <Property Name="Error" Id="{b2e201dd-3eb6-4d5d-b33f-a138110fb4f8}">
+      <Declaration><![CDATA[PROPERTY Error : Bool]]></Declaration>
+      <Get Name="Get" Id="{aeb2adfa-cbae-4696-8b3f-b7c711e0b73a}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Error:= bErrorStateNow;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="Init" Id="{59f82614-dcbe-43d0-86b6-7dfc0a9ef5c4}">
+      <Declaration><![CDATA[METHOD Init : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[//bStarting := TRUE;
+bErrorStateNow := TRUE;
+
+//Do something....]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="ScaleFactor" Id="{7a71058e-65f2-4243-97bc-5e309c667473}">
+      <Declaration><![CDATA[//Returns the scale factor to be used on the new data
+PROPERTY PRIVATE ScaleFactor : UINT]]></Declaration>
+      <Get Name="Get" Id="{040a8495-d5e6-4d3b-8727-782b8c6582d8}">
+        <Declaration><![CDATA[VAR
+
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[//Error conditions
+IF bX1 AND bX10 THEN
+	bErrorStateNow := TRUE;
+	RETURN;
+END_IF
+
+IF bX1 AND bX100 THEN
+	bErrorStateNow := TRUE;
+	RETURN;
+END_IF
+
+IF bX10 AND bX100 THEN
+	bErrorStateNow := TRUE;
+	RETURN;
+END_IF
+
+IF NOT bX1 AND NOT bX10 AND NOT bX100 THEN
+	bErrorStateNow := TRUE;
+	RETURN;
+END_IF
+
+//Depending on what IO is connected send back 1, 10, 100 or set error!
+IF bX1 THEN
+	ScaleFactor := 1;
+END_IF
+
+IF bX10 THEN
+	ScaleFactor := 10;
+END_IF
+
+IF bX100 THEN
+	ScaleFactor := 100;
+END_IF
+
+]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="Start" Id="{041e362b-9db0-4fff-aafd-c4ad1987e207}">
+      <Declaration><![CDATA[METHOD PUBLIC Start
+VAR_INPUT
+	nMotorStartPoisition	:	UINT ;	//Check that this is passed to the "main"
+										//May need to be implicitly defined.
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[eMPGState := INIT_START;]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="Starting" Id="{f6649c59-5513-4a63-b3e5-cdba9759c7a4}">
+      <Declaration><![CDATA[PROPERTY Starting : Bool]]></Declaration>
+      <Get Name="Get" Id="{90477962-ec61-4ae0-b358-95796823c82a}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[IF (eMPGState = INIT_START OR eMPGState = WAIT_START) THEN
+	Starting := TRUE;
+	ELSE
+	Starting := FALSE;				
+END_IF]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="Stop" Id="{721c28d1-5acc-46bf-b254-7241c63d0365}">
+      <Declaration><![CDATA[METHOD PUBLIC Stop
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="Value" Id="{1a784deb-81ed-475c-82e7-8f94e4a35191}">
+      <Declaration><![CDATA[//Calculated ABS position value requested by MPG
+PROPERTY Value : UINT		]]></Declaration>
+      <Get Name="Get" Id="{4e03f040-7b24-41de-8cea-d51cff1970d6}">
+        <Declaration><![CDATA[]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Value := DINT_TO_UINT(nDeltaPosition);
+//What is the form needed for motor position??]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+  </POU>
+</TcPlcObject>

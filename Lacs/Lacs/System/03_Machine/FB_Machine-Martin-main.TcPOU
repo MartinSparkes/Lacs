@@ -19,24 +19,18 @@ VAR
 	
 	
 	
-		fbGetCurTaskIndex : GETCURTASKINDEX;
+	eMPGState : (INIT_START, WAIT_START, RUNNING);
+	
 	
 	// =============== Testing ==================================================================
 	_UINT : UINT;
+	
+	
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[// =========================================================
 // Call of actions
-
-//Check for start cycle
-//Move to main later.....
-//fbGetCurTaskIndex();
-//IF _TaskInfo[fbGetCurTaskIndex.index].FirstCycle THEN
-//    // The code that you want to be executed at the first cycle
-//	eMPGState := INIT_START;
-//END_IF
-
 
 	// Init
 	General_Init();
@@ -75,13 +69,24 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[// =========================================================
+
 IF NOT bInit THEN
-		fbMPG.Start(1234);
-		
+	
+
 	// Init done
 		bInit := TRUE;
 END_IF
+
 // =========================================================]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="General_StateMachine" Id="{49e44fbd-ba5a-4087-a8a2-9cb01d5be7ca}">
+      <Declaration><![CDATA[METHOD General_StateMachine
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
       </Implementation>
     </Method>
     <Method Name="Operating_Automatic" Id="{714f1efb-65b0-4136-9af7-6fcce3bba863}">

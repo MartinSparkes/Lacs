@@ -3493,5 +3493,32 @@ END_VAR
         <ST><![CDATA[]]></ST>
       </Implementation>
     </Method>
+    <LineIds Name="FB_MotorControl">
+      <LineId Id="3" Count="16" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_MotorControl.bStateEnable.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_MotorControl.bStateEnable.Set">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_MotorControl.Enable">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_MotorControl.Halt">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_MotorControl.MoveAbs">
+      <LineId Id="3" Count="24" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_MotorControl.Reset">
+      <LineId Id="3" Count="26" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_MotorControl.Stop">
+      <LineId Id="2" Count="0" />
+    </LineIds>
   </POU>
 </TcPlcObject>

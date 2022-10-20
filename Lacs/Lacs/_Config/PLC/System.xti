@@ -975,11 +975,29 @@ External Setpoint Generation:
 				<Defines></Defines>
 			</Variant>
 		</ProjectVariant>
-		<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="System\System.tmc" TmcHash="{25539110-E0DF-3ECD-9C86-6B6B0C63F6F2}">
+		<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="System\System.tmc" TmcHash="{58C7006C-5F63-2C16-1A54-417EECDBE172}">
 			<Name>System Instance</Name>
 			<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 			<Vars VarGrpType="1">
 				<Name>PlcTask Inputs</Name>
+				<Var>
+					<Name>MAIN.fbMachine.fbMPG.EncoderValue</Name>
+					<Comment><![CDATA[Measured Value from Encoder]]></Comment>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbMachine.fbMPG.bX1</Name>
+					<Comment><![CDATA[Multipliers]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbMachine.fbMPG.bX10</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.fbMachine.fbMPG.bX100</Name>
+					<Type>BOOL</Type>
+				</Var>
 				<Var>
 					<Name>GVL_SA.Motor1.AxisRef.NcToPlc</Name>
 					<Type GUID="{10036166-C9D3-404B-BDD3-323034AAA7F4}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
@@ -988,10 +1006,22 @@ External Setpoint Generation:
 			<Vars VarGrpType="2" AreaNo="1">
 				<Name>PlcTask Outputs</Name>
 				<Var>
+					<Name>MAIN.fbMachine.fbMPG.SetValueZero</Name>
+					<Comment><![CDATA[Request encoder be reset to zero 	]]></Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
 					<Name>GVL_SA.Motor1.AxisRef.PlcToNc</Name>
 					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 				</Var>
 			</Vars>
+			<UnrestoredVarLinks ImportTime="2022-10-19T14:36:18">
+				<OwnerA Name="InputDst" Prefix="TIPC^System^System Instance" Type="1">
+					<OwnerB Name="TIID^Device 3 (EtherCAT)^Term 1 (EK1100)^Term 10 (EL5101)">
+						<Link VarA="MAIN.fbMachine.MPG.EncoderValue" TypeA="UINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000005}" VarB="ENC Status compact^Counter value" RestoreInfo="ANotFound"/>
+					</OwnerB>
+				</OwnerA>
+			</UnrestoredVarLinks>
 			<Contexts>
 				<Context>
 					<Id NeedCalleeCall="true">0</Id>
@@ -1020,6 +1050,9 @@ External Setpoint Generation:
 	</Project>
 	<Mappings>
 		<OwnerA Name="System Instance">
+			<OwnerB Name="TIID^Device 3 (EtherCAT)^Term 1 (EK1100)^Term 10 (EL5101)">
+				<Link VarA="PlcTask Inputs^MAIN.fbMachine.fbMPG.EncoderValue" VarB="ENC Status compact^Counter value"/>
+			</OwnerB>
 			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Axis 2">
 				<Link VarA="PlcTask Inputs^GVL_SA.Motor1.AxisRef.NcToPlc" VarB="Outputs^ToPlc"/>
 				<Link VarA="PlcTask Outputs^GVL_SA.Motor1.AxisRef.PlcToNc" VarB="Inputs^FromPlc"/>
