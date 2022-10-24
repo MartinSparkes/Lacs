@@ -54,6 +54,17 @@
     <Compile Include="04_Application\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="05_Visu\FB_Visu.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="05_Visu\HMI.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="05_Visu\TAB_Simulation.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
     <Compile Include="DUTs\ST_MC_Base.TcDUT">
       <SubType>Code</SubType>
     </Compile>
@@ -76,10 +87,6 @@
     <Compile Include="GVLs\Temp.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
-    </Compile>
-    <Compile Include="HMI.TcVIS">
-      <SubType>Code</SubType>
-      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
     </Compile>
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>

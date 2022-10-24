@@ -3,7 +3,12 @@
   <GVL Name="Temp" Id="{ba013bbf-fd0b-47c2-9325-6267efdb3ece}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
-	GVL_MPG_Value : UINT;
+	//GVL_MPG_Value : UINT;
+	
+	bSwitch1:	BOOL;
+	bLED1: BOOL;
+	
+	
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

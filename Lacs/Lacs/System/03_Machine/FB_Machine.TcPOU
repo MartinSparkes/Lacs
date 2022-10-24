@@ -19,6 +19,8 @@ VAR
 	
 	
 	
+	fbVisu : FB_Visu;
+	
 		fbGetCurTaskIndex : GETCURTASKINDEX;
 	
 	// =============== Testing ==================================================================
@@ -58,6 +60,8 @@ END_VAR
 	
 	// Visualization
 	//General_Visu();
+	fbVisu();
+	
 
 // =========================================================
 //TESTING

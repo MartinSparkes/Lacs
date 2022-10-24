@@ -13,75 +13,109 @@ VAR
 	bX1					AT %I* : BOOL;	//Multipliers
 	bX10				AT %I* : BOOL;
 	bX100				AT %I* : BOOL;
+	bEnabled			AT %I* : BOOL;
+	
 	
 	eMPGState : (INIT_START, WAIT_START, RUNNING, STOPPED);	//MPG state machine defenitions
 	
 	nMotorStartPoisition	: UINT	;	//Where was the motor at the beginning
-	
-	nLastEncoderValue		: UINT	;	//Encoder value on last scan cycle
-	nDeltaEncoder			: DINT	;	//Encoder change per scan
 	nDeltaPosition			: DINT	;	//Calculated position request change from start
-		
-	bErrorStateNow 			: BOOL	;	//System in error state
-	bError_LastUnread		: BOOL	;	//Error has occured, and not been read/ cleared
+										//Motor value 	nMotorStartPoisition + nDeltaPosition
 
+	nLastEncoderValue		: UINT	;	//Encoder value on last scan cycle
+	nDeltaEncoder_PerScan	: DINT	;	//Encoder change per scan
+	
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[//Check for start cycle
-//Move to main later.....
-//fbGetCurTaskIndex();
-//IF _TaskInfo[fbGetCurTaskIndex.index].FirstCycle THEN
-//    // The code that you want to be executed at the first cycle
-//	eMPGState := INIT_START;
-//END_IF
-
-CASE eMPGState OF
-	INIT_START:
-		bErrorStateNow := TRUE;
+      <ST><![CDATA[CASE eMPGState OF
+	INIT_START:												//Holding state
 		eMPGState := WAIT_START;
 	
-	WAIT_START:
-	
+	WAIT_START:												//Holding state
 		eMPGState := RUNNING;
+
 	RUNNING:
-		IF (bErrorStateNow) THEN		//If current error state
-			nDeltaPosition := 0;		//No change in position possible	
+		IF (Error_Scaler OR Error_AxisSelect) THEN			//If current error state
+			//nDeltaPosition := 0;							//No change in position possible	
 		ELSE
 			//Update values
-			nDeltaEncoder  := nLastEncoderValue - EncoderValue;
-			nDeltaPosition := nDeltaPosition + nDeltaEncoder * ScaleFactor;			
+			nDeltaEncoder_PerScan  := nLastEncoderValue - EncoderValue;
+			nDeltaPosition := nDeltaPosition + nDeltaEncoder_PerScan * ScaleFactor;			
 		END_IF
 
+	STOPPED:
+		//Do nothing
 END_CASE
 
-nLastEncoderValue := EncoderValue;	//Next scan will be only on change in encoder position
-									//Protects from changes when in error state
-]]></ST>
+nLastEncoderValue := EncoderValue;	//Ensure next scan always sees change in encoder position]]></ST>
     </Implementation>
-    <Property Name="Error" Id="{b2e201dd-3eb6-4d5d-b33f-a138110fb4f8}">
-      <Declaration><![CDATA[PROPERTY Error : Bool]]></Declaration>
-      <Get Name="Get" Id="{aeb2adfa-cbae-4696-8b3f-b7c711e0b73a}">
+    <Property Name="Error" Id="{ecdf36d9-fbaf-4cd8-bf8a-e26069870eef}">
+      <Declaration><![CDATA[PROPERTY PUBLIC Error : Bool]]></Declaration>
+      <Get Name="Get" Id="{d5526351-497b-4690-b926-6483b85f0d07}">
         <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>
         <Implementation>
-          <ST><![CDATA[Error:= bErrorStateNow;]]></ST>
+          <ST><![CDATA[//System in any error or any condition other than running.
+
+Error := FALSE;
+
+IF (Error_AxisSelect OR Error_Scaler) THEN
+	Error := TRUE;
+END_IF
+
+IF eMPGState <> RUNNING THEN
+	Error := TRUE;
+END_IF
+ ]]></ST>
         </Implementation>
       </Get>
     </Property>
-    <Method Name="Init" Id="{59f82614-dcbe-43d0-86b6-7dfc0a9ef5c4}">
-      <Declaration><![CDATA[METHOD Init : BOOL
-VAR_INPUT
+    <Property Name="Error_AxisSelect" Id="{2a4e321f-811f-4262-a299-3a5e11b9487f}">
+      <Declaration><![CDATA[PROPERTY PRIVATE Error_AxisSelect : Bool]]></Declaration>
+      <Get Name="Get" Id="{cdec9763-27fd-4c77-8034-2b248cd06209}">
+        <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[//bStarting := TRUE;
-bErrorStateNow := TRUE;
+        <Implementation>
+          <ST><![CDATA[]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="Error_Scaler" Id="{fce49344-80e8-4e26-9c77-7fec1fcc8447}">
+      <Declaration><![CDATA[PROPERTY PRIVATE Error_Scaler : Bool]]></Declaration>
+      <Get Name="Get" Id="{469ea559-20cc-444e-8bde-7efb06ac9ac5}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[//Error conditions
+IF bX1 AND bX10 THEN
+	Error_Scaler := TRUE;
+	RETURN;
+END_IF
 
-//Do something....]]></ST>
-      </Implementation>
-    </Method>
+IF bX1 AND bX100 THEN
+	Error_Scaler := TRUE;
+	RETURN;
+END_IF
+
+IF bX10 AND bX100 THEN
+	Error_Scaler := TRUE;
+	RETURN;
+END_IF
+
+IF NOT bX1 AND NOT bX10 AND NOT bX100 THEN
+	Error_Scaler := TRUE;
+	RETURN;
+END_IF
+
+Error_Scaler := FALSE;
+]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
     <Property Name="ScaleFactor" Id="{7a71058e-65f2-4243-97bc-5e309c667473}">
       <Declaration><![CDATA[//Returns the scale factor to be used on the new data
 PROPERTY PRIVATE ScaleFactor : UINT]]></Declaration>
@@ -91,28 +125,7 @@ PROPERTY PRIVATE ScaleFactor : UINT]]></Declaration>
 END_VAR
 ]]></Declaration>
         <Implementation>
-          <ST><![CDATA[//Error conditions
-IF bX1 AND bX10 THEN
-	bErrorStateNow := TRUE;
-	RETURN;
-END_IF
-
-IF bX1 AND bX100 THEN
-	bErrorStateNow := TRUE;
-	RETURN;
-END_IF
-
-IF bX10 AND bX100 THEN
-	bErrorStateNow := TRUE;
-	RETURN;
-END_IF
-
-IF NOT bX1 AND NOT bX10 AND NOT bX100 THEN
-	bErrorStateNow := TRUE;
-	RETURN;
-END_IF
-
-//Depending on what IO is connected send back 1, 10, 100 or set error!
+          <ST><![CDATA[//Depending on what IO is connected send back 1, 10, 100 or set error!
 IF bX1 THEN
 	ScaleFactor := 1;
 END_IF
@@ -124,6 +137,8 @@ END_IF
 IF bX100 THEN
 	ScaleFactor := 100;
 END_IF
+
+
 
 ]]></ST>
         </Implementation>
@@ -161,16 +176,15 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[eMPGState := E_PMLState.STOPPED;]]></ST>
       </Implementation>
     </Method>
     <Property Name="Value" Id="{1a784deb-81ed-475c-82e7-8f94e4a35191}">
-      <Declaration><![CDATA[//Calculated ABS position value requested by MPG
-PROPERTY Value : UINT		]]></Declaration>
+      <Declaration><![CDATA[PROPERTY Value : UINT		//Calculated ABS position value requested by MPG, check Error before use.]]></Declaration>
       <Get Name="Get" Id="{4e03f040-7b24-41de-8cea-d51cff1970d6}">
         <Declaration><![CDATA[]]></Declaration>
         <Implementation>
-          <ST><![CDATA[Value := DINT_TO_UINT(nDeltaPosition);
+          <ST><![CDATA[Value := DINT_TO_UINT(nMotorStartPoisition + nDeltaPosition);
 //What is the form needed for motor position??]]></ST>
         </Implementation>
       </Get>

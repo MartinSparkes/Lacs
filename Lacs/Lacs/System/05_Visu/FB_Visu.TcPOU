@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="FB_Visu" Id="{bbf9b693-b057-4022-8b05-3d31764fe693}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Visu
+VAR_INPUT
+	nMPGCounter : DINT;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	sDisplayText_MPG : STRING(15);
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[sDisplayText_MPG := 'Sent';]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

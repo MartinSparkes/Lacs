@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.32" ClassName="CDevEtherCATSlaveDef" SubType="130" TcProjectVariant="Pyrometer_Motor">
+	<DataTypes>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-00000000003D}" TcBaseType="true" HideType="true">USINTARR6</Name>
+			<BitSize>48</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000002}">USINT</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>6</Elements>
+			</ArrayInfo>
+		</DataType>
+	</DataTypes>
+	<Device Id="4" DevType="130" AmsNetId="5.112.215.4.5.255" RemoteName="Device 4 (EtherCAT Slave)">
+		<Name>__FILENAME__</Name>
+		<AddressInfo>
+			<Ccat>
+				<Address>-268435456</Address>
+				<Offset>65536</Offset>
+				<Size>65536</Size>
+				<BaseAddr>0</BaseAddr>
+				<BusNo>65535</BusNo>
+				<SlotNo>0</SlotNo>
+				<TimeSize>128</TimeSize>
+				<TimeOffs>1024</TimeOffs>
+				<GpioSize>32</GpioSize>
+				<GpioOffs>768</GpioOffs>
+			</Ccat>
+		</AddressInfo>
+		<Vars VarGrpType="1" InsertType="1">
+			<Name>Inputs</Name>
+		</Vars>
+		<Vars VarGrpType="2" InsertType="1">
+			<Name>Outputs</Name>
+		</Vars>
+		<Vars VarGrpType="3">
+			<Name>InfoData</Name>
+			<Var>
+				<Name>State</Name>
+				<Comment><![CDATA[0x___1 = Slave is in 'INIT' state
+0x___2 = Slave is in 'PREOP' state
+0x___4 = Slave is in 'SAFEOP' state
+0x___8 = Slave is in 'OP' state]]></Comment>
+				<Type>UINT</Type>
+				<InOut>0</InOut>
+			</Var>
+			<Var>
+				<Name>NetId</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000003D}">USINTARR6</Type>
+				<BitOffs>16</BitOffs>
+				<InOut>0</InOut>
+			</Var>
+		</Vars>
+		<Image Id="7" AddrType="1" ImageType="2">
+			<Name>Image</Name>
+		</Image>
+		<EtherCATSlave/>
+	</Device>
+</TcSmItem>

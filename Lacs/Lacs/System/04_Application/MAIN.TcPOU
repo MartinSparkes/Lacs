@@ -30,11 +30,8 @@ GVL_SA.Motor1.bStateEnable := TRUE;
 {END_IF}
 
 Dummy	:= TRUE;
-]]></ST>
+
+Temp.bLED1 := Temp.bSwitch1;]]></ST>
     </Implementation>
-    <LineIds Name="MAIN">
-      <LineId Id="3" Count="16" />
-      <LineId Id="2" Count="0" />
-    </LineIds>
   </POU>
 </TcPlcObject>
